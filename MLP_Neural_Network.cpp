@@ -2,9 +2,11 @@
 
 #include <algorithm>
 #include <cstring>
+#include <ctime>
+
 
 inline double sigmoid(double rhs) {
-    return 1 / (1 + std::exp(-rhs));
+    return 1 / (1 + std::exp(-rhs * response));
 }
 
 /************ Matrix ******************/
@@ -12,8 +14,9 @@ inline double sigmoid(double rhs) {
 Matrix::Matrix(int Row = 0, int Col = 0, double rhs = 0.01) {
     row_Max = Row; col_Max = Col;
     for (int row = 0; row < row_Max; row++) {
+        weights[row].clear();
         for (int col = 0; col < col_Max; col++) {
-            weights[row].push_back(rhs);
+            weights[row].push_back(0.2 * (double)rand() / RAND_MAX - 0.1);
         }
     }
 }
@@ -68,23 +71,23 @@ void Layer::copy(std::vector<double> &sample) {
     nodes.clear();
     std::vector<double>::iterator iter = sample.begin();
     for ( ; iter != sample.end(); iter++) {
-        nodes.push_back(Neuron((*iter)));
-        if (iter + 1 == sample.end())
-            nodes.push_back(1.0);
+        nodes.push_back(Neuron(*iter, 0));
     }
+    nodes.push_back(Neuron());
     size = nodes.size();
 }
 
 void Layer::Mat_mul_Lay(Matrix &mat, Layer &lay) {
     std::pair<int, int> pac = mat.get_rc();
-    if (pac.second != lay.size) return;
     nodes.clear();
+    if (pac.second != lay.size) return;
     for (int row = 0; row < pac.first; row++) {
         double lay_rowNum = 0.0;
         for (int col = 0; col < pac.second; col++)
             lay_rowNum += mat.get_curr(row, col) * lay.nodes[col].state;
         nodes.push_back(Neuron(sigmoid(lay_rowNum)));
     }
+    
     size = nodes.size();
 }
 
@@ -117,15 +120,20 @@ void Network::init() {
 }
 
 void Network::get_sam(std::vector<double> &inp_oup) {
-    double tar = (*inp_oup.begin()) * 255.0;
+    double tar = (*inp_oup.begin());
     std::vector<double> outp;
     for (int inc = 0; inc < op_nodes_num; inc++) {
         outp.push_back((int(tar) == inc ? 1 : 0));
     }
     inp_oup.erase(inp_oup.begin());
 
+    int sz = inp_oup.size();
+    for (int inc = 0; inc < sz; inc++) {
+        inp_oup[inc] = (inp_oup[inc] >= 128);
+    }
+
     input_layer.copy(inp_oup);
-    sam_output.copy(outp);
+    sam_output.copy(outp);  // sam_output.size = 11 not 10
 }
 
 void Network::_forward_pro() {
@@ -154,44 +162,49 @@ void Network::_back_pro() {
 }
 
 void Network::calc_sita() {
-    for (int idx = 0; idx < op_nodes_num; idx++) {
+    for (int idx = 0; idx < op_nodes_num; idx++) {  // net_j in output_layer
         double gey = output_layer.nodes[idx].state;
         double tar = sam_output.nodes[idx].state;
-        output_layer.nodes[idx].sita = \
-            gey * (1 - gey) * (tar - gey);
+        output_layer.nodes[idx].sita = gey * (1 - gey) * (tar - gey); // sita_j = (t_j - y_j) * y_j * (1 - y_j)
     }
 
+    // for each hidden_layer
     for (int lay_idx = hl_num - 1; lay_idx >= 0; lay_idx--) {
-        int tar_mat_num = lay_idx + 1;
+        int tar_mat_num = lay_idx + 1; // tar_mat_num: the idx of matrix for w_{kj}
         std::pair<int, int> pack = mats[tar_mat_num].get_rc();
-        for (int node_idx = 0; node_idx < hl_nodes_num; node_idx++) {
-            double prev = hidden_layer[lay_idx].nodes[node_idx].state * \
-                (1 - hidden_layer[lay_idx].nodes[node_idx].state);
+        for (int node_idx = 0; node_idx < hl_nodes_num; node_idx++) { // net_j in hidden_layer
+            // prev: x_j * (1 - x_j)
+            double prev = hidden_layer[lay_idx].nodes[node_idx].state * (1 - hidden_layer[lay_idx].nodes[node_idx].state);
+            // post: sum_{k}{sita_k * w_{kj}}
             double post = 0;
             int rowNum = pack.first;
             for (int row = 0; row < rowNum; row++) {
-                post += mats[tar_mat_num].get_curr(row, 0) *
-                    (lay_idx == hl_num - 1 ? 
-                        output_layer.nodes[row].state :
-                        hidden_layer[lay_idx + 1].nodes[row].state);
+                double next_sita = 0;
+                if (lay_idx == hl_num - 1)
+                    next_sita = output_layer.nodes[row].sita;
+                else
+                    next_sita = hidden_layer[lay_idx + 1].nodes[row].sita;
+                post += mats[tar_mat_num].get_curr(row, node_idx) * next_sita;
             }
             hidden_layer[lay_idx].nodes[node_idx].sita = prev * post;
         }
     }
+
 }
 
 void Network::updata_weight() {
     std::pair<int, int> pack = mats[0].get_rc();
 
+    // for each matrix
     for (int mat_idx = 0; mat_idx < hl_num + 1; mat_idx ++) {
         for (int row = 0; row < pack.first; row++) {
             for (int col = 0; col < pack.second; col++) {
-                double _sita = mat_idx == hl_num ?
+                double _sita = (mat_idx == hl_num ?
                     output_layer.nodes[row].sita :
-                    hidden_layer[mat_idx].nodes[row].sita;
-                double _xput = mat_idx == 0 ?
+                    hidden_layer[mat_idx].nodes[row].sita);
+                double _xput = (mat_idx == 0 ?
                     input_layer.nodes[col].state :
-                    hidden_layer[mat_idx - 1].nodes[col].state;
+                    hidden_layer[mat_idx - 1].nodes[col].state);
                 double _grap = rate * _sita * _xput;
                 double _orig = mats[mat_idx].get_curr(row, col);
                 mats[mat_idx].set_curr(row, col, _orig + _grap);
@@ -253,4 +266,12 @@ void Network::read(const char *filename) {
     }
 
     readFile.close();
+}
+
+void Network::show_state_sita() {
+    for (int inc = 0; inc < hidden_layer[0].nodes.size(); inc++) {
+        std::cout << "num: " << inc << \
+            "   state: " << hidden_layer[0].nodes[inc].state << \
+            "   sita:  " << hidden_layer[0].nodes[inc].sita << std::endl;
+    }
 }

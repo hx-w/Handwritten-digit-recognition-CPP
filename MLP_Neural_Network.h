@@ -5,8 +5,10 @@
 #include <cmath>
 #include <vector>
 #include <fstream>
+#include <iostream>
 
 const int MATRIX_MAX = 800;
+const double response = 1;
 
 class Matrix;
 class Neuron;
@@ -76,6 +78,7 @@ public:
     void save(const char *);
     void read(const char *);
     
+    void show_state_sita();
 private:
     void _forward_pro();
     void _back_pro();

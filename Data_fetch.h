@@ -54,7 +54,7 @@ void DataManager::fetchSample(std::vector<double> &spt, const int spt_num  = inp
 }
 
 inline double DataManager::_stod(std::string spl) {
-    return double(stoi(spl, nullptr, 10) / 255.0);
+    return double(stoi(spl, nullptr, 10));
 }
 
 #endif // !DATA_FETCH

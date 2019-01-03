@@ -9,15 +9,15 @@ const char *Data_train = "./mnist_train.csv";
 const char *Data_save  = "./param_save.dat";
 
 
-const double rate = 0.0015;
-const int hl_num = 10;
+const double rate = 0.35;
+const int hl_num = 1;
 const int ip_nodes_num = input_layer_num;
 const int op_nodes_num = 10;
-const int hl_nodes_num = 100;
+const int hl_nodes_num = 300;
 
 const int train_round = 20;
-const int test_round  = 13;
-const int total_ = 100;
+const int test_round  = 100;
+const int total_ = 1000;
 
 bool show_result(vector<double> &re, int cnt) {
     cout << "num: " << cnt << endl;
@@ -41,6 +41,8 @@ bool show_result(vector<double> &re, int cnt) {
 }
 
 int main() {
+    srand(time(NULL));
+
     DataManager DM;
     DM.openFile(Data_train);
     vector<double> in_out;
@@ -52,7 +54,7 @@ int main() {
 
     net.init();
 
-    //net.read(Data_save);
+    net.read(Data_save);
     for (int cnt = 0; cnt < total_; cnt++) {
         cout << "train round _______________________" << endl;
         for (int train_ = 0; train_ < train_round; train_++) {
@@ -62,6 +64,7 @@ int main() {
             net.get_result(result);
 
             show_result(result, cnt * total_ + train_);
+            //net.show_state_sita();
         }
 
         net.save(Data_save);
