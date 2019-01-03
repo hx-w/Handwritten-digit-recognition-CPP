@@ -108,6 +108,12 @@ void Assistant::working() {
     printf("______________test done_____________\n");
 }
 
+void Assistant::pause() {
+    printf("Press Enter to exit.");
+    std::getchar();
+    std::getchar();
+}
+
 /************** Public *************/
 bool Assistant::__show_res() const {
     if (__show_detail) {

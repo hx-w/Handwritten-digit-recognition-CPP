@@ -1,6 +1,5 @@
 #include "Assistant.h"
 
-#include <cstdlib>
 using namespace std;
 
 
@@ -11,6 +10,6 @@ int main() {
 
     assistant.working();
 
-    system("pause");
+    assistant.pause();
     return 0;
 }

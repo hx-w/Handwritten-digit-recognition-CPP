@@ -15,6 +15,8 @@ public:
     void set_param();
 
     void working();
+
+    void pause();
 private:
     bool __show_res() const;
 
