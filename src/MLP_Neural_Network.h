@@ -2,13 +2,30 @@
 #ifndef MLP_NEURAL_NETWORKS
 #define MLP_NEURAL_NETWORKS
 
+#include <algorithm>
+#include <cstring>
+#include <ctime>
 #include <cmath>
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <iomanip>
+
 
 const int MATRIX_MAX = 800;
 const double response = 1;
+
+const int MAX_TRAIN = 60000;
+const int MAX_TEST  = 10000;
+
+const double rate = 0.35;
+const int hl_num = 1;
+const int ip_nodes_num = 28 * 28;
+const int op_nodes_num = 10;
+const int hl_nodes_num = 300;
+
+
+
 
 class Matrix;
 class Neuron;
@@ -63,7 +80,7 @@ public:
 
 class Network {
 public:
-    Network(double, int, int, int, int);
+    Network();
     ~Network();
 
     void init();
@@ -78,7 +95,6 @@ public:
     void save(const char *);
     void read(const char *);
     
-    void show_state_sita();
 private:
     void _forward_pro();
     void _back_pro();

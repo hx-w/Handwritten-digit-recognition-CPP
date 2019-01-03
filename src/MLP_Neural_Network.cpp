@@ -1,13 +1,10 @@
 #include "MLP_Neural_Network.h"
 
-#include <algorithm>
-#include <cstring>
-#include <ctime>
-
 
 inline double sigmoid(double rhs) {
     return 1 / (1 + std::exp(-rhs * response));
 }
+
 
 /************ Matrix ******************/
 
@@ -95,10 +92,11 @@ void Layer::Mat_mul_Lay(Matrix &mat, Layer &lay) {
 
 /************** Network ****************/
 
-Network::Network(double ra = 0, int hln = 0, int hlo = 0, 
-    int ipo = 0, int opo = 0) {
-    rate = ra; hl_num = hln; hl_nodes_num = hlo;
-    ip_nodes_num = ipo; op_nodes_num = opo;
+Network::Network() {
+    rate = ::rate; hl_num = ::hl_num;
+    hl_nodes_num = ::hl_nodes_num;
+    ip_nodes_num = ::ip_nodes_num;
+    op_nodes_num = ::op_nodes_num;
     Ed = 0;
 }
 
@@ -266,12 +264,4 @@ void Network::read(const char *filename) {
     }
 
     readFile.close();
-}
-
-void Network::show_state_sita() {
-    for (int inc = 0; inc < hidden_layer[0].nodes.size(); inc++) {
-        std::cout << "num: " << inc << \
-            "   state: " << hidden_layer[0].nodes[inc].state << \
-            "   sita:  " << hidden_layer[0].nodes[inc].sita << std::endl;
-    }
 }
