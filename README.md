@@ -112,7 +112,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 >
 > - 超参数配置: `.\config\hyparam.cfg`
 >
->   > 隐藏层: 1
+>   > 隐藏层数目: 1
 >   >
 >   > 隐藏层结点: 300
 >   >
@@ -136,19 +136,15 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 >
 >    是否显示每组数据的测试结果？
 >
->
->
 > 2. *.Want to train before testing or test directly with existing parameters?
 >
 >    输入yes，选择重新训练一组新的参数用于测试
 >
 >    输入no，选择直接用现有的参数进行测试
 >
->
->
 > 3. *.Input the path of train_data
 >
->    输入用于**训练**的数据文件路径<一般为`./static/train_test/mnist_train.csv`>(问题2 回答yes后出现)
+>    输入用于**训练**的数据文件路径<输入'D'默认为`../static/train_test/mnist_train.csv`>(问题2 回答yes后出现)
 >
 > 4. *.Input the records num want to be trained(max 60000)
 >
@@ -156,15 +152,15 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 >
 > 5. *.Input the file name of trained parameters
 >
->    输入用于保存训练后得到的参数的文件路径<一般为`./static/param_save.dat`>(问题2 回答yes后出现)
+>    输入用于保存训练后得到的参数的文件路径<输入'D'默认为`../config/param.cfg`>(问题2 回答yes后出现)
 >
 > 6. *.Input the path of parameters_data
 >
->    输入现有的参数文件路径(问题2 回答no后出现)
+>    输入现有的参数文件路径<输入'D'默认为`../config/param.cfg`>(问题2 回答no后出现)
 >
 > 7. *.Input the path of test_data
 >
->    输入用于**测试**的数据文件路径<一般为`./static/train_test/mnist_test.csv`>
+>    输入用于**测试**的数据文件路径<输入'D'默认为`./static/train_test/mnist_test.csv`>
 >
 > 8. *.Input the records num want to be tested(max 10000)
 >
@@ -172,30 +168,48 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 >
 > 9. *.Input the file name of accuracy rate result
 >
->    输入存放测试结果的文件路径<一般为`./static/acc_save.dat`>
+>    输入存放测试结果的文件路径<输入'D'默认为`../result/acc_save.dat`>
 
-**这里演示一种情况，这也是`./static/param_save.dat`的最新数据，该种测试会非常慢，所以别模拟这种情况。**
+**这里演示一种情况，这使用默认路径下的`param.cfg`，见下图**
 
 ![](./img/param_set.jpg)
 
 > - 不显示每组数据的测试结果
-> - 选择新训练一组数据进行测试
-> - 训练数据路径为`./static/train_test/mnist_train.csv`
-> - 训练数据20000组
-> - 训练后的参数保存在`./static/param_save.dat`
-> - 测试数据路径为`./static/train_test/mnist_test.csv`
-> - 测试数据2000组
-> - 测试结果保存在`./static/acc_save.dat`中
+> - 选择现有的训练参数进行测试
+> - 训练参数在默认路径: `../config/param.cfg`
+> - 测试数据在默认路径: `../static/train_test/mnist_test.csv`
+> - 测试数据1000组
+> - 测试结果保存在默认路径: `.\result\acc_save.dat`中
 
 
 
 ## 测试结果
 
+上一部分演示的结果为:
+
+![](./img/result.jpg)
+
+其中每部分:
+
+> - Start time: mon-day hour:min:sec   # 程序开始的本地时间
+> - Param: ../config/param.cfg         # 训练参数的路径
+> - Test_num: 1000                     # 测试组数
+> - Accuarcy 0.941                     # 识别准确率 (94.1%)
+> - Finish time: mon-day hour:min:sec  # 程序结束的本地时间 
+
+可把`.\params\`中的压缩包解压，其中`param.cfg`和`hyparam.cfg`复制到`.\config\`中作为新配置文件进行测试。
+
+>  一般测试数据组数应大于1000。
+
 
 
 ## 项目参与
 
-参与者可通过采用不同的超参数或输入预处理办法来得到更好的训练参数。
+### 说明
+
+除了仅用该程序做测试，还可以通过改变超参数或输入数据预处理算法来贡献新的参数配置。
+
+具体的，
 
 ### 超参数
 
