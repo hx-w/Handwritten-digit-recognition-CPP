@@ -178,7 +178,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 |    └── show.jpg          # 展示图2
 ├── params                 # 参与者贡献的数据文件集合
 |    ├── ...
-|    └── A_B_C.zip         # A:参与者姓名   B:隐藏层数   C:隐藏层结点数
+|    └── A_B_C.zip         # A:参与者ID   B:隐藏层数   C:隐藏层结点数
 |         ├── hyparam.cfg  # 该测试所用的超参数配置
 |         ├── param.cfg    # 训练得到的参数配置
 |         └── README.txt   # 此次测试的简单说明(包括训练组数，测试组数，准确率以及对源码的改进等)
@@ -209,7 +209,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 >
 > - 命令行： `cmd`
 >
-> - 超参数配置: `..\config\hyparam.cfg`（预置)
+> - 超参数配置: `.\config\hyparam.cfg`（预置)
 >
 >   > 隐藏层数目: 1
 >   >
@@ -217,9 +217,9 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 >   >
 >   > 学习速率: 0.35
 >
-> - 训练参数配置: `..\config\param.cfg`
+> - 训练参数配置: `.\config\param.cfg`(默认)
 >
->   > 训练`..\static\train_test\mnist_train.csv` 60000组得到
+>   > 训练`.\static\train_test\mnist_train.csv` 60000组得到
 >
 > - 测试结果：测试结果默认保存在`.\result\acc_save.dat`中，在之前的测试结果后追加
 
@@ -259,7 +259,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 >
 > 7. *.Input the path of test_data
 >
->    输入用于**测试**的数据文件路径<输入'D'默认为`./static/train_test/mnist_test.csv`>
+>    输入用于**测试**的数据文件路径<输入'D'默认为`../static/train_test/mnist_test.csv`>
 >
 > 8. *.Input the records num want to be tested(max 10000)
 >
@@ -278,7 +278,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 > - 训练参数在默认路径: `../config/param.cfg`
 > - 测试数据在默认路径: `../static/train_test/mnist_test.csv`
 > - 测试数据10000组
-> - 测试结果保存在默认路径: `./result/acc_save.dat`中
+> - 测试结果保存在默认路径: `../result/acc_save.dat`中
 
 
 
@@ -319,7 +319,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
    >
    > - 将训练得到的`param.cfg`，所用超参数配置`hyparam.cfg`，以及说明文档`README.txt`放入同一文件夹，并压缩成压缩文件。
    >
-   > - 该文件夹命名为 "昵称_隐藏层数目\_隐藏层结点数"。
+   > - 该文件夹命名为 "昵称ID_隐藏层数目\_隐藏层结点数"。
    >
    > - 放入`.\params\`目录下上传
 
