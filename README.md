@@ -49,7 +49,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 >
 > 测试数据: `minist_test.csv` 10000组
 
-每组数据包含$28\times28 + 1=785$项:
+每组数据包含<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;28\times28&space;&plus;&space;1=785" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;28\times28&space;&plus;&space;1=785" title="28\times28 + 1=785" /></a>项:
 
 - 第1项，数据标签label，取值[0,9]。
 
