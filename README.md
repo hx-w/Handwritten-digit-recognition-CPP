@@ -161,7 +161,7 @@
 
 - **求<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial w_{ji}}" /></a>**
 
-  > 设<a href="https://www.codecogs.com/eqnedit.php?latex=net_j&space;=&space;\vec{w_{j*}}&space;\cdot&space;\vec{x_{j*}}&space;=&space;\sum_i{w_{ji}\cdot&space;x_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?net_j&space;=&space;\vec{w_{j*}}&space;\cdot&space;\vec{x_{j*}}&space;=&space;\sum_i{w_{ji}\cdot&space;x_{ji}}" title="net_j = \vec{w_{j*}} \cdot \vec{x_{j*}} = \sum_i{w_{ji}\cdot x_{ji}}" /></a>
+  > 设<a href="https://www.codecogs.com/eqnedit.php?latex=net_j&space;=&space;\vec{w_{j*}}&space;\cdot&space;\vec{v_{j*}}&space;=&space;\sum_i{w_{ji}\cdot&space;v_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?net_j&space;=&space;\vec{w_{j*}}&space;\cdot&space;\vec{v_{j*}}&space;=&space;\sum_i{w_{ji}\cdot&space;v_{ji}}" title="net_j = \vec{w_{j*}} \cdot \vec{v_{j*}} = \sum_i{w_{ji}\cdot v_{ji}}" /></a>
 
   则 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;E_d}{\partial&space;w_{ji}}=&space;\frac{\partial&space;E_d}{\partial&space;net_j}&space;\cdot&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;E_d}{\partial&space;w_{ji}}=&space;\frac{\partial&space;E_d}{\partial&space;net_j}&space;\cdot&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial w_{ji}}= \frac{\partial E_d}{\partial net_j} \cdot \frac{\partial net_j}{\partial w_{ji}}" /></a>
 
@@ -171,8 +171,12 @@
 
   - 求<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" title="\frac{\partial net_j}{\partial w_{ji}}" /></a>
 
-    <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;net_j}{\partial&space;w_{ji}}&space;=&space;\frac{\partial&space;\sum_i{w_{ji}v_{ji}}}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;net_j}{\partial&space;w_{ji}}&space;=&space;\frac{\partial&space;\sum_i{w_{ji}v_{ji}}}{\partial&space;w_{ji}}" title="\frac{\partial net_j}{\partial w_{ji}} = \frac{\partial \sum_i{w_{ji}v_{ji}}}{\partial w_{ji}}" /></a>
+    直接求偏导得
 
+    <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;net_j}{\partial&space;w_{ji}}&space;=&space;\frac{\partial&space;\sum_i{w_{ji}v_{ji}}}{\partial&space;w_{ji}}&space;=&space;\frac{\partial&space;(w_{j0}v_{j0}&space;&plus;&space;\dots&space;&plus;&space;w_{ji}v_{ji}&space;&plus;&space;\dots&space;&plus;&space;w_{jn}v_{jn})}{\partial&space;w_{ji}}&space;=&space;v_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;net_j}{\partial&space;w_{ji}}&space;=&space;\frac{\partial&space;\sum_i{w_{ji}v_{ji}}}{\partial&space;w_{ji}}&space;=&space;\frac{\partial&space;(w_{j0}v_{j0}&space;&plus;&space;\dots&space;&plus;&space;w_{ji}v_{ji}&space;&plus;&space;\dots&space;&plus;&space;w_{jn}v_{jn})}{\partial&space;w_{ji}}&space;=&space;v_{ji}" title="\frac{\partial net_j}{\partial w_{ji}} = \frac{\partial \sum_i{w_{ji}v_{ji}}}{\partial w_{ji}} = \frac{\partial (w_{j0}v_{j0} + \dots + w_{ji}v_{ji} + \dots + w_{jn}v_{jn})}{\partial w_{ji}} = v_{ji}" /></a> 
+
+
+- **结论**
 
 
 待补
