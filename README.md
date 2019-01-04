@@ -7,6 +7,7 @@
 - [概况](#概况)
 - [数据结构](#数据结构)
 - [算法推导](#算法推导)
+  - [变量声明](#变量声明)
   - [随机梯度下降](#随机梯度下降)
   - [反向传播算法](#反向传播算法)
 - [训练测试数据](#训练测试数据)
@@ -53,16 +54,61 @@
 
 待补
 
-
 ## 算法推导
+
+### 变量声明
+
+- 输入数据: <a href="https://www.codecogs.com/eqnedit.php?latex=(\vec{X},\vec{T})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(\vec{X},\vec{T})" title="(\vec{X},\vec{T})" /></a>
+
+  > 其中
+  >
+  > <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{X}=\begin{bmatrix}&space;x_0&space;\\&space;x_1&space;\\&space;\cdots&space;\\&space;x_i&space;\\&space;\cdots&space;\\&space;x_{783}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{X}=\begin{bmatrix}&space;x_0&space;\\&space;x_1&space;\\&space;\cdots&space;\\&space;x_i&space;\\&space;\cdots&space;\\&space;x_{783}&space;\end{bmatrix}" title="\vec{X}=\begin{bmatrix} x_0 \\ x_1 \\ \cdots \\ x_i \\ \cdots \\ x_{783} \end{bmatrix}" /></a>， <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{T}=\begin{bmatrix}&space;t_0&space;\\&space;t_1&space;\\&space;\cdots&space;\\&space;t_i&space;\\&space;\cdots&space;\\&space;t_{9}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{T}=\begin{bmatrix}&space;t_0&space;\\&space;t_1&space;\\&space;\cdots&space;\\&space;t_i&space;\\&space;\cdots&space;\\&space;t_{9}&space;\end{bmatrix}" title="\vec{T}=\begin{bmatrix} t_0 \\ t_1 \\ \cdots \\ t_i \\ \cdots \\ t_{9} \end{bmatrix}" /></a>
+  >
+  > 且
+  >
+  > <a href="https://www.codecogs.com/eqnedit.php?latex=\exists&space;i&space;\in[0,&space;783]&space;\rightarrow&space;x_i&space;\in{\mathbb{N}}&space;\wedge&space;x_i&space;\in&space;[0,&space;255]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\exists&space;i&space;\in[0,&space;783]&space;\rightarrow&space;x_i&space;\in{\mathbb{N}}&space;\wedge&space;x_i&space;\in&space;[0,&space;255]" title="\exists i \in[0, 783] \rightarrow x_i \in{\mathbb{N}} \wedge x_i \in [0, 255]" /></a>
+  >
+  > <a href="https://www.codecogs.com/eqnedit.php?latex=\exists&space;i&space;\in[0,&space;9]&space;\rightarrow&space;t_i&space;\in&space;\{0,&space;1\}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\exists&space;i&space;\in[0,&space;9]&space;\rightarrow&space;t_i&space;\in&space;\{0,&space;1\}" title="\exists i \in[0, 9] \rightarrow t_i \in \{0, 1\}" /></a>
+
+- 输出数据: <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{Y}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{Y}" title="\vec{Y}" /></a>
+
+  > <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{Y}&space;=&space;\begin{bmatrix}&space;y_0\\&space;y_1\\&space;\cdots\\&space;y_i&space;\\&space;\cdots&space;\\&space;y_9&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{Y}&space;=&space;\begin{bmatrix}&space;y_0\\&space;y_1\\&space;\cdots\\&space;y_i&space;\\&space;\cdots&space;\\&space;y_9&space;\end{bmatrix}" title="\vec{Y} = \begin{bmatrix} y_0\\ y_1\\ \cdots\\ y_i \\ \cdots \\ y_9 \end{bmatrix}" /></a>
+  >
+  > 且
+  >
+  > <a href="https://www.codecogs.com/eqnedit.php?latex=\exists&space;i&space;\in&space;[0,&space;9]&space;\rightarrow&space;y_i&space;\in&space;\mathbb{Q}&space;\wedge&space;y_i&space;\in&space;(0,&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\exists&space;i&space;\in&space;[0,&space;9]&space;\rightarrow&space;y_i&space;\in&space;\mathbb{Q}&space;\wedge&space;y_i&space;\in&space;(0,&space;1)" title="\exists i \in [0, 9] \rightarrow y_i \in \mathbb{Q} \wedge y_i \in (0, 1)" /></a>
+
+- 代价函数: <a href="https://www.codecogs.com/eqnedit.php?latex=E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" title="E_d = \frac{1}{2}\sum_{i\in outputs}{(t_i - y_i)^2}" /></a>
+
+- 激活函数: <a href="https://www.codecogs.com/eqnedit.php?latex=sigmoid(x)=\frac{1}{1&plus;e^{-x}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?sigmoid(x)=\frac{1}{1&plus;e^{-x}}" title="sigmoid(x)=\frac{1}{1+e^{-x}}" /></a>
+
+- 学习速率: <a href="https://www.codecogs.com/eqnedit.php?latex=\eta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\eta" title="\eta" /></a>
+
+- 边值权重: <a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}" title="w_{ji}" /></a>
 
 ### 随机梯度下降
 
-待补
+采用随机梯度下降算法优化训练时间，并且可以有效逃离多元函数局部极小值。
+
+由于<a href="https://www.codecogs.com/eqnedit.php?latex=E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" title="E_d = \frac{1}{2}\sum_{i\in outputs}{(t_i - y_i)^2}" /></a>是输出数据<a href="https://www.codecogs.com/eqnedit.php?latex=y_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_i" title="y_i" /></a>的直接函数，故可将<a href="https://www.codecogs.com/eqnedit.php?latex=E_d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E_d" title="E_d" /></a>看作所有<a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}" title="w_{ji}" /></a>的多元函数。
+
+在某一<a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}" title="w_{ji}" /></a>维度下求该函数梯度的负值即<a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}" title="w_{ji}" /></a>的调整方向。
+
+如图:
+
+![](./img/down.jpg)
+
+故针对某一边值权重进行更新的方法为:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}\leftarrow&space;w_{ji}-\eta\cdot&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}\leftarrow&space;w_{ji}-\eta\cdot&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" title="w_{ji}\leftarrow w_{ji}-\eta\cdot \frac{\partial E_d}{\partial w_{ji}}" /></a>
 
 [参考内容](https://www.zybuluo.com/hanbingtao/note/448086)
 
 ### 反向传播算法
+
+在随机梯度下降的基础上，每次训练更新所有边值权重，即关键点是求<a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;E_d}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;E_d}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial w_{ji}}" /></a>
+
+
 
 待补
 
@@ -101,7 +147,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 ├── img
 |    ├── frame.jpeg        # 展示图1
 |    ├── release.jpg       # 效果图1
-|    ├── param_set.jpg     # 效果图2
+|    ├── ...  			  # 效果图2
 |    └── show.jpg          # 展示图2
 ├── params                 # 参与者贡献的数据文件集合
 |    ├── ...
@@ -136,7 +182,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 >
 > - 命令行： `cmd`
 >
-> - 超参数配置: `.\config\hyparam.cfg`
+> - 超参数配置: `..\config\hyparam.cfg`（预置)
 >
 >   > 隐藏层数目: 1
 >   >
@@ -144,9 +190,9 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 >   >
 >   > 学习速率: 0.35
 >
-> - 训练参数配置: `.\config\param.cfg`
+> - 训练参数配置: `..\config\param.cfg`
 >
->   > 训练`.\static\train_test\mnist_train.csv` 60000组得到
+>   > 训练`..\static\train_test\mnist_train.csv` 60000组得到
 >
 > - 测试结果：测试结果默认保存在`.\result\acc_save.dat`中，在之前的测试结果后追加
 
