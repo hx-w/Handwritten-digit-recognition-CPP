@@ -6,44 +6,9 @@ Test_num : 200
 Finish time: 1-4 13:34:46
 __________*_____ * ______*_________
 ________________ * ________________
-Start time: 1-4 14:46:52
+Start time: 1-4 16:39:58
 Param: ../config/param.cfg
-Test_num : 100
--*- Accuracy -*-: 0.97
-Finish time: 1-4 14:47:14
-__________*_____ * ______*_________
-________________ * ________________
-Start time: 1-4 14:50:11
-Param: ../config/param.cfg
-Test_num : 100
--*- Accuracy -*-: 0.97
-Finish time: 1-4 14:50:33
-__________*_____ * ______*_________
-________________ * ________________
-Start time: 1-4 14:52:3
-Param: ../config/param.cfg
-Test_num : 200
--*- Accuracy -*-: 0.96
-Finish time: 1-4 14:52:3
-__________*_____ * ______*_________
-________________ * ________________
-Start time: 1-4 14:52:44
-Param: ../config/param.cfg
-Test_num : 1000
--*- Accuracy -*-: 0.941
-Finish time: 1-4 14:52:45
-__________*_____ * ______*_________
-________________ * ________________
-Start time: 1-4 15:42:23
-Param: ../config/param.cfg
-Test_num : 1000
--*- Accuracy -*-: 0.941
-Finish time: 1-4 15:42:24
-__________*_____ * ______*_________
-________________ * ________________
-Start time: 1-4 15:56:22
-Param: ../config/param.cfg
-Test_num : 1000
--*- Accuracy -*-: 0.941
-Finish time: 1-4 15:56:23
+Test_num : 10000
+-*- Accuracy -*-: 0.9536
+Finish time: 1-4 16:40:6
 __________*_____ * ______*_________

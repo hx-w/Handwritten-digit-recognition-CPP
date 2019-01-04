@@ -48,6 +48,8 @@
 
 ## 数据结构
 
+![](./img/frame.jpeg)
+
 待补
 
 
@@ -96,9 +98,10 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 |    ├── hyparam.cfg       # 超参数配置
 |    └── param.cfg         # 训练参数配置(可重新训练)
 ├── img
-|    ├── frame.jpg         # 展示图1
+|    ├── frame.jpeg        # 展示图1
 |    ├── release.jpg       # 效果图1
-|    └── param_set.jpg     # 效果图2
+|    ├── param_set.jpg     # 效果图2
+|    └── show.jpg          # 展示图2
 ├── params                 # 参与者贡献的数据文件集合
 |    ├── ...
 |    └── A_B_C.zip         # A:参与者姓名   B:隐藏层数   C:隐藏层结点数
@@ -200,8 +203,8 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 > - 选择现有的训练参数进行测试
 > - 训练参数在默认路径: `../config/param.cfg`
 > - 测试数据在默认路径: `../static/train_test/mnist_test.csv`
-> - 测试数据1000组
-> - 测试结果保存在默认路径: `.\result\acc_save.dat`中
+> - 测试数据10000组
+> - 测试结果保存在默认路径: `./result/acc_save.dat`中
 
 
 
@@ -215,31 +218,42 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
 > - Start time: mon-day hour:min:sec   # 程序开始的本地时间
 > - Param: ../config/param.cfg         # 训练参数的路径
-> - Test_num: 1000                     # 测试组数
-> - Accuarcy 0.941                     # 识别准确率 (94.1%)
+> - Test_num: 10000                    # 测试组数
+> - Accuracy 0.9536                    # 识别准确率 (95.36%)
 > - Finish time: mon-day hour:min:sec  # 程序结束的本地时间 
 
 可把`.\params\`中的压缩包解压，其中`param.cfg`和`hyparam.cfg`复制到`.\config\`中作为新配置文件进行测试。
 
->  一般测试数据组数应大于1000。
-
-
+>  一般测试数据组数应尽量大(10000)。
 
 ## 项目参与
 
 ### 说明
 
-除了仅用该程序做测试，还可以通过改变超参数或输入数据预处理算法来贡献新的参数配置。
+除了仅用该程序做测试，还可以通过改变超参数或输入数据预处理算法来贡献新的训练参数配置。
 
+1. 更改`.\config\hyparam.cfg`中的超参数配置 (详情见[超参数](#超参数))
 
+2. 如果有必要，更改输入数据预处理算法 (详情见[输入预处理](#输入预处理))
+
+3. 训练一组新的`param.cfg`，并且对该训练参数配置进行测试，测试数据数目应为10000(测完)
+
+4. 训练测试之后进行打包，规则如下:
+   > - 撰写说明文档`README.txt`，内容如下
+   >
+   > ![](./img/show.jpg)
+   >
+   > - 将训练得到的`param.cfg`，所用超参数配置`hyparam.cfg`，以及说明文档`README.txt`放入同一文件夹，并压缩成压缩文件。
+   > - 该文件夹命名为 "昵称_隐藏层数目\_隐藏层结点数"。
+   > - 放入`.\params\`目录下上传
 
 ### 超参数
 
+在`hyparam.cfg`文件中需要设置3种配置，如下:
+
 - `rate`学习速率
 
-  位置：  "MLP_Neural_Network.h" >row 21
-
-  初始值: 0.35
+  示例值: 0.35
 
   调整建议: 
 
@@ -249,9 +263,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
 - `hl_num`隐藏层层数
 
-  位置:	"MLP_Neural_Network.h" >row 22
-
-  初始值: 1
+  示例值: 1
 
   调整建议:
 
@@ -261,9 +273,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
 - `hl_nodes_num`隐藏层的维度
 
-  位置:	"MLP_Neural_Network.h" >row 25
-
-  初始值:  300
+  示例值: 300
 
   调整建议:
 
@@ -287,7 +297,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
   <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\alpha&space;\in&space;[1,&space;10]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\alpha&space;\in&space;[1,&space;10]" title="\alpha \in [1, 10]" /></a>
 
-  > ps: 由于程序设计的问题，所有隐藏层的维度都将是`hl_nodes_num`，如果有需要可以改进为不同隐藏层的维度不同。	 
+  > PS: 由于程序设计的问题，所有隐藏层的维度都将是`hl_nodes_num`，如果有需要可以改进为不同隐藏层的维度不同。	 
 
 ### 输入预处理
 
@@ -295,7 +305,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
 - 预处理函数: `inline void Network::input_prep(std::vector<double> &)`
 
-- 函数实现位置: "MLP_Neural_Network.cpp" >row 285
+- 函数实现位置: "MLP_Neural_Network.cpp" >row 300+
 
 - 预览:
 
@@ -328,3 +338,4 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 - 调整建议:
 
   该方法将输入进行二值化离散处理，可以考虑多分几种情况，把离散的程度更加连续。
+
