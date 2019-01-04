@@ -131,7 +131,7 @@
 
 <a href="https://www.codecogs.com/eqnedit.php?latex={A_1}&space;=&space;sigmoid({W_1}&space;\cdot&space;{A_0})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{A_1}&space;=&space;sigmoid({W_1}&space;\cdot&space;{A_0})" title="{A_1} = sigmoid({W_1} \cdot {A_0})" /></a>
 
-...
+<a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\vdots" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\vdots" title="\large \vdots" /></a>
 
 <a href="https://www.codecogs.com/eqnedit.php?latex={A_{hl\_num&space;-&space;1}}&space;=&space;sigmoid({W_{hl\_num&space;-&space;1}}&space;\cdot&space;{A_{hl\_num&space;-&space;2}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{A_{hl\_num&space;-&space;1}}&space;=&space;sigmoid({W_{hl\_num&space;-&space;1}}&space;\cdot&space;{A_{hl\_num&space;-&space;2}})" title="{A_{hl\_num - 1}} = sigmoid({W_{hl\_num - 1}} \cdot {A_{hl\_num - 2}})" /></a>
 
@@ -197,6 +197,10 @@
   令
 
   <a href="https://www.codecogs.com/eqnedit.php?latex=\delta_j&space;=&space;v_{*j}&space;\cdot&space;(1-v_{*j})&space;\cdot&space;\sum_{k\in&space;Downstream(j)}&space;{\delta_kw_{kj}}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\delta_j&space;=&space;v_{*j}&space;\cdot&space;(1-v_{*j})&space;\cdot&space;\sum_{k\in&space;Downstream(j)}&space;{\delta_kw_{kj}}" title="\delta_j = v_{*j} \cdot (1-v_{*j}) \cdot \sum_{k\in Downstream(j)} {\delta_kw_{kj}}" /></a>
+
+#### **思维导图**
+
+![](./img/path.jpg)
 
 #### **结论**
 
