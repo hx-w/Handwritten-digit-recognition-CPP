@@ -112,6 +112,7 @@ void Assistant::pause() {
     printf("Press Enter to exit.");
     std::getchar();
     std::getchar();
+    
 }
 
 /************** Public *************/

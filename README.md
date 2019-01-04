@@ -28,12 +28,15 @@
 ## 数据结构
 
 
-
 ## 算法推导
 
-- 随机梯度下降
+### 随机梯度下降
 
-- 反向传播算法
+[参考内容](https://www.zybuluo.com/hanbingtao/note/448086)
+
+### 反向传播算法
+
+[参考内容](https://www.zybuluo.com/hanbingtao/note/476663)
 
 ## 训练测试数据
 
@@ -143,7 +146,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 >
 >    输入存放测试结果的文件路径<一般为`./static/acc_save.dat`>
 
-**这里演示一种情况，这也是`./static/param_save.dat`的最新数据，该种测试会==非常==慢，所以别模拟这种情况。**
+**这里演示一种情况，这也是`./static/param_save.dat`的最新数据，该种测试会非常慢，所以别模拟这种情况。**
 
 ![](./img/param_set.jpg)
 
