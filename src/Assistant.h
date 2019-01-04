@@ -1,6 +1,7 @@
 #pragma once
 #ifndef ASSISTANT
 #define ASSISTANT
+#define _CRT_SECURE_NO_WARNINGS
 
 #include "Data_fetch.h"
 #include "MLP_Neural_Network.h"

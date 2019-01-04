@@ -29,7 +29,7 @@ void Assistant::set_param() {
     if (choice[0] == 'y' || choice[0] == 'Y') {
         printf("\n*.Input the path of train_data\n>> ");
         std::cin >> Data_train;
-        printf("\n*.Input the records num want be trained(max 60000)\n>> ");
+        printf("\n*.Input the records num want to be trained(max 60000)\n>> ");
         std::cin >> train_num;
         printf("\n*.Input the file name of trained parameters\n>> ");
         std::cin >> Data_save;
@@ -41,7 +41,7 @@ void Assistant::set_param() {
 
     printf("\n*.Input the path of test_data\n>> ");
     std::cin >> Data_test;
-    printf("\n*.Input the records num want be tested(max 10000)\n>> ");
+    printf("\n*.Input the records num want to be tested(max 10000)\n>> ");
     std::cin >> test_num;
 
     printf("\n*.Input the file name of accuracy rate result\n>> ");
@@ -49,6 +49,19 @@ void Assistant::set_param() {
 }
 
 void Assistant::working() {
+    std::ofstream outFiles(Accu_save.c_str(), std::ios::app);
+    outFiles << "________________ * ________________\n";
+
+    std::time_t rawtime;
+    tm *ptminfo;
+    std::time(&rawtime);
+    ptminfo = std::localtime(&rawtime);
+    
+    outFiles << "Start time: " << \
+        ptminfo->tm_mon + 1 << "-" << ptminfo->tm_mday << " " <<\
+        ptminfo->tm_hour << ":" << ptminfo->tm_min << \
+        ":" << ptminfo->tm_sec << std::endl;
+
     double proce = 0;
     if (train_num) {
         printf("______________train part_____________\n");
@@ -90,9 +103,6 @@ void Assistant::working() {
         }
     }
 
-    std::ofstream outFiles(Accu_save.c_str(), std::ios::app);
-    outFiles << "________________ * ________________\n";
-    outFiles << "Time : " << __TIME__ << std::endl;
     if (Data_save.empty()) {
         outFiles << "Param: " << Data_read << std::endl;
     }
@@ -102,6 +112,13 @@ void Assistant::working() {
     }
     outFiles << "Test_num : " << test_num << std::endl;
     outFiles << "-*- Accuracy -*-: " << 1.0 * accu_num / test_num << std::endl;
+
+    std::time(&rawtime);
+    ptminfo = std::localtime(&rawtime);
+    outFiles << "Finish time: " << \
+        ptminfo->tm_mon + 1 << "-" << ptminfo->tm_mday << " " <<\
+        ptminfo->tm_hour << ":" << ptminfo->tm_min << \
+        ":" << ptminfo->tm_sec << std::endl;
     outFiles << "__________*_____ * ______*_________\n";
     outFiles.close();
 
@@ -112,7 +129,6 @@ void Assistant::pause() {
     printf("Press Enter to exit.");
     std::getchar();
     std::getchar();
-    
 }
 
 /************** Public *************/

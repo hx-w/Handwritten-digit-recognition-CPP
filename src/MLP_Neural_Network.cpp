@@ -93,8 +93,6 @@ void Layer::Mat_mul_Lay(Matrix &mat, Layer &lay) {
 /************** Network ****************/
 
 Network::Network() {
-    rate = ::rate; hl_num = ::hl_num;
-    hl_nodes_num = ::hl_nodes_num;
     ip_nodes_num = ::ip_nodes_num;
     op_nodes_num = ::op_nodes_num;
     Ed = 0;
@@ -105,6 +103,9 @@ Network::~Network() {
 }
 
 void Network::init() {
+
+    __read_cfg();
+
     for (int inc = 0; inc < hl_num; inc ++) {
         hidden_layer.push_back(Layer(hl_nodes_num));
     }
@@ -125,10 +126,9 @@ void Network::get_sam(std::vector<double> &inp_oup) {
     }
     inp_oup.erase(inp_oup.begin());
 
-    int sz = inp_oup.size();
-    for (int inc = 0; inc < sz; inc++) {
-        inp_oup[inc] = (inp_oup[inc] >= 128);
-    }
+    // prepropress
+    input_prep(inp_oup);
+    
 
     input_layer.copy(inp_oup);
     sam_output.copy(outp);  // sam_output.size = 11 not 10
@@ -264,4 +264,48 @@ void Network::read(const char *filename) {
     }
 
     readFile.close();
+}
+
+void Network::__read_cfg() {
+    std::ifstream infile(cfg_filename.c_str());
+    if (!infile.good())
+        exit(-1);
+    const char *msg_hl_num = "hl_num";
+    const char *msg_hl_nodes = "hl_nodes_num";
+    const char *msg_rate = "rate";
+    std::string line;
+    while (infile >> line) {
+        if (line == msg_rate)
+            infile >> this->rate;
+        else if (line == msg_hl_num)
+            infile >> this->hl_num;
+        else if (line == msg_hl_nodes)
+            infile >> this->hl_nodes_num;
+    }
+
+    infile.close();
+}
+
+/**
+ * @Brief  Preprocessing 784-dimensional vector input_layer
+ * @Date   2019-01-04
+ * @Param  inputs: the vector<double> of input value, sizeof(inputs) == 28 * 28
+ *                 values in inputs are guaranteed to [0, MAX_VALUE]
+ *                 with MAX_VALUE defined as (1 << 8) - 1 at "MLP_Neural_Network.h"
+ *
+ * @Author    Herixth
+ * @Algorithm 
+ *        // Write down specific processing algorithms:
+ *        For each element E in inputs
+ *        > if E > (MAX_VALUE >> 1)
+ *              E = 1.0
+ *        > else
+ *              E = 0.0
+          So the input_layer can be treated as a zero-one matrix
+ */
+inline void Network::input_prep(std::vector<double> &inputs) {
+    std::vector<double>::iterator iter = inputs.begin();
+    for (; iter != inputs.end(); iter++) {
+        (*iter) = ((*iter) > (MAX_VALUE >> 1));
+    }
 }

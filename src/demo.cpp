@@ -11,5 +11,6 @@ int main() {
     assistant.working();
 
     assistant.pause();
+
     return 0;
 }
