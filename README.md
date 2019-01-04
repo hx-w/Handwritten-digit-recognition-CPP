@@ -8,6 +8,7 @@
 - [数据结构](#数据结构)
 - [算法推导](#算法推导)
   - [变量声明](#变量声明)
+  - [正向传播](#正向传播)
   - [随机梯度下降](#随机梯度下降)
   - [反向传播算法](#反向传播算法)
 - [训练测试数据](#训练测试数据)
@@ -62,7 +63,7 @@
 
   > 其中
   >
-  > <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{X}=\begin{bmatrix}&space;x_0&space;\\&space;x_1&space;\\&space;\cdots&space;\\&space;x_i&space;\\&space;\cdots&space;\\&space;x_{783}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{X}=\begin{bmatrix}&space;x_0&space;\\&space;x_1&space;\\&space;\cdots&space;\\&space;x_i&space;\\&space;\cdots&space;\\&space;x_{783}&space;\end{bmatrix}" title="\vec{X}=\begin{bmatrix} x_0 \\ x_1 \\ \cdots \\ x_i \\ \cdots \\ x_{783} \end{bmatrix}" /></a>， <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{T}=\begin{bmatrix}&space;t_0&space;\\&space;t_1&space;\\&space;\cdots&space;\\&space;t_i&space;\\&space;\cdots&space;\\&space;t_{9}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{T}=\begin{bmatrix}&space;t_0&space;\\&space;t_1&space;\\&space;\cdots&space;\\&space;t_i&space;\\&space;\cdots&space;\\&space;t_{9}&space;\end{bmatrix}" title="\vec{T}=\begin{bmatrix} t_0 \\ t_1 \\ \cdots \\ t_i \\ \cdots \\ t_{9} \end{bmatrix}" /></a>
+  > <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{X}=\begin{bmatrix}&space;x_0&space;\\&space;x_1&space;\\&space;\cdots&space;\\&space;x_i&space;\\&space;\cdots&space;\\&space;x_{783}&space;\\&space;1&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{X}=\begin{bmatrix}&space;x_0&space;\\&space;x_1&space;\\&space;\cdots&space;\\&space;x_i&space;\\&space;\cdots&space;\\&space;x_{783}&space;\\&space;1&space;\end{bmatrix}" title="\vec{X}=\begin{bmatrix} x_0 \\ x_1 \\ \cdots \\ x_i \\ \cdots \\ x_{783} \\ 1 \end{bmatrix}" /></a>为输入层， <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{T}=\begin{bmatrix}&space;t_0&space;\\&space;t_1&space;\\&space;\cdots&space;\\&space;t_i&space;\\&space;\cdots&space;\\&space;t_{9}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{T}=\begin{bmatrix}&space;t_0&space;\\&space;t_1&space;\\&space;\cdots&space;\\&space;t_i&space;\\&space;\cdots&space;\\&space;t_{9}&space;\end{bmatrix}" title="\vec{T}=\begin{bmatrix} t_0 \\ t_1 \\ \cdots \\ t_i \\ \cdots \\ t_{9} \end{bmatrix}" /></a>为标签
   >
   > 且
   >
@@ -78,6 +79,8 @@
   >
   > <a href="https://www.codecogs.com/eqnedit.php?latex=\exists&space;i&space;\in&space;[0,&space;9]&space;\rightarrow&space;y_i&space;\in&space;\mathbb{Q}&space;\wedge&space;y_i&space;\in&space;(0,&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\exists&space;i&space;\in&space;[0,&space;9]&space;\rightarrow&space;y_i&space;\in&space;\mathbb{Q}&space;\wedge&space;y_i&space;\in&space;(0,&space;1)" title="\exists i \in [0, 9] \rightarrow y_i \in \mathbb{Q} \wedge y_i \in (0, 1)" /></a>
 
+- 隐藏层: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\vec{A_k}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\vec{A_k}" title="\vec{A_k}" /></a>
+
 - 代价函数: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" title="E_d = \frac{1}{2}\sum_{i\in outputs}{(t_i - y_i)^2}" /></a>
 
 - 激活函数: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;sigmoid(x)=\frac{1}{1&plus;e^{-x}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;sigmoid(x)=\frac{1}{1&plus;e^{-x}}" title="sigmoid(x)=\frac{1}{1+e^{-x}}" /></a>
@@ -86,7 +89,27 @@
 
 - 边值权重: <a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}" title="w_{ji}" /></a>
 
-- 权值误差: <a href="https://www.codecogs.com/eqnedit.php?latex=\delta_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\delta_i" title="\delta_i" /></a>
+  > 表示从结点i连到结点j的边值权重
+
+- 结点误差: <a href="https://www.codecogs.com/eqnedit.php?latex=\delta_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\delta_i" title="\delta_i" /></a>
+
+- 隐藏层数: hl_num
+
+- 隐藏层结点数: hl_nodes_num
+
+### 正向传播
+
+> 设隐藏层数hl_num
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\vec{A_0}&space;=&space;sigmoid(\vec{W_0}&space;\cdot&space;\vec{X})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{A_0}&space;=&space;sigmoid(\vec{W_0}&space;\cdot&space;\vec{X})" title="\vec{A_0} = sigmoid(\vec{W_0} \cdot \vec{X})" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\vec{A_1}&space;=&space;sigmoid(\vec{W_1}&space;\cdot&space;\vec{A_0})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{A_1}&space;=&space;sigmoid(\vec{W_1}&space;\cdot&space;\vec{A_0})" title="\vec{A_1} = sigmoid(\vec{W_1} \cdot \vec{A_0})" /></a>
+
+...
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\vec{A_{hl\_num&space;-&space;1}}&space;=&space;sigmoid(\vec{W_{hl\_num&space;-&space;1}}&space;\cdot&space;\vec{A_{hl\_num&space;-&space;2}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{A_{hl\_num&space;-&space;1}}&space;=&space;sigmoid(\vec{W_{hl\_num&space;-&space;1}}&space;\cdot&space;\vec{A_{hl\_num&space;-&space;2}})" title="\vec{A_{hl\_num - 1}} = sigmoid(\vec{W_{hl\_num - 1}} \cdot \vec{A_{hl\_num - 2}})" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\vec{Y}&space;=&space;sigmoid(\vec{W_{hl\_num}}&space;\cdot&space;\vec{A_{hl\_num&space;-&space;1}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{Y}&space;=&space;sigmoid(\vec{W_{hl\_num}}&space;\cdot&space;\vec{A_{hl\_num&space;-&space;1}})" title="\vec{Y} = sigmoid(\vec{W_{hl\_num}} \cdot \vec{A_{hl\_num - 1}})" /></a>
 
 ### 随机梯度下降
 
@@ -109,6 +132,10 @@
 ### 反向传播算法
 
 在随机梯度下降的基础上，每次训练更新所有边值权重，即关键点是求<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial w_{ji}}" /></a>
+
+> 设<a href="https://www.codecogs.com/eqnedit.php?latex=net_j&space;=&space;\vec{w_{j*}}&space;\cdot&space;\vec{x_{j*}}&space;=&space;\sum_i{w_{ji}\cdot&space;x_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?net_j&space;=&space;\vec{w_{j*}}&space;\cdot&space;\vec{x_{j*}}&space;=&space;\sum_i{w_{ji}\cdot&space;x_{ji}}" title="net_j = \vec{w_{j*}} \cdot \vec{x_{j*}} = \sum_i{w_{ji}\cdot x_{ji}}" /></a>
+
+则 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;E_d}{\partial&space;w_{ji}}=&space;\frac{\partial&space;E_d}{\partial&space;net_j}&space;\cdot&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;E_d}{\partial&space;w_{ji}}=&space;\frac{\partial&space;E_d}{\partial&space;net_j}&space;\cdot&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial w_{ji}}= \frac{\partial E_d}{\partial net_j} \cdot \frac{\partial net_j}{\partial w_{ji}}" /></a>
 
 
 
@@ -368,7 +395,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
    *                 values in inputs are guaranteed to [0, MAX_VALUE]
    *                 with MAX_VALUE defined as (1 << 8) - 1 at "MLP_Neural_Network.h"
    *
-   * @Author    Herixth
+   * @Author Herixth
    * @Algorithm 
    *        // Write down specific processing algorithms:
    *        For each element E in inputs
