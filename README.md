@@ -86,6 +86,8 @@
 
 - 边值权重: <a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}" title="w_{ji}" /></a>
 
+- 权值误差: <a href="https://www.codecogs.com/eqnedit.php?latex=\delta_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\delta_i" title="\delta_i" /></a>
+
 ### 随机梯度下降
 
 采用随机梯度下降算法优化训练时间，并且可以有效逃离多元函数局部极小值。
@@ -106,7 +108,7 @@
 
 ### 反向传播算法
 
-在随机梯度下降的基础上，每次训练更新所有边值权重，即关键点是求<a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;E_d}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;E_d}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial w_{ji}}" /></a>
+在随机梯度下降的基础上，每次训练更新所有边值权重，即关键点是求<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial w_{ji}}" /></a>
 
 
 
