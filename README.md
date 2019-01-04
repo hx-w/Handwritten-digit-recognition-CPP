@@ -70,6 +70,10 @@
   > <a href="https://www.codecogs.com/eqnedit.php?latex=\exists&space;i&space;\in[0,&space;783]&space;\rightarrow&space;x_i&space;\in{\mathbb{N}}&space;\wedge&space;x_i&space;\in&space;[0,&space;255]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\exists&space;i&space;\in[0,&space;783]&space;\rightarrow&space;x_i&space;\in{\mathbb{N}}&space;\wedge&space;x_i&space;\in&space;[0,&space;255]" title="\exists i \in[0, 783] \rightarrow x_i \in{\mathbb{N}} \wedge x_i \in [0, 255]" /></a>
   >
   > <a href="https://www.codecogs.com/eqnedit.php?latex=\exists&space;i&space;\in[0,&space;9]&space;\rightarrow&space;t_i&space;\in&space;\{0,&space;1\}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\exists&space;i&space;\in[0,&space;9]&space;\rightarrow&space;t_i&space;\in&space;\{0,&space;1\}" title="\exists i \in[0, 9] \rightarrow t_i \in \{0, 1\}" /></a>
+  >
+  > <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;X" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;X" title="X" /></a>的最后一项恒为1，为了匹配<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;W" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;W" title="W" /></a>中的偏置项<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;w_{ib}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;w_{ib}" title="w_{ib}" /></a>
+  >
+  > 除了最后一层即输出层之外，其他层的最后一项恒为1
 
 - 输出数据: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;Y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;Y" title="Y" /></a>
 
@@ -81,17 +85,33 @@
 
 - 隐藏层: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;A" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;A" title="A" /></a>
 
+  > 其中
+  >
   > <a href="https://www.codecogs.com/eqnedit.php?latex={A}=\begin{bmatrix}&space;a_0&space;\\&space;a_1&space;\\&space;\cdots&space;\\&space;a_i&space;\\&space;\cdots&space;\\&space;a_{hl\_nodes\_num&space;-1}&space;\\&space;1&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{A}=\begin{bmatrix}&space;a_0&space;\\&space;a_1&space;\\&space;\cdots&space;\\&space;a_i&space;\\&space;\cdots&space;\\&space;a_{hl\_nodes\_num&space;-1}&space;\\&space;1&space;\end{bmatrix}" title="{A}=\begin{bmatrix} a_0 \\ a_1 \\ \cdots \\ a_i \\ \cdots \\ a_{hl\_nodes\_num -1} \\ 1 \end{bmatrix}" /></a>
+  >
+  > 且
+  >
+  > <a href="https://www.codecogs.com/eqnedit.php?latex=\exists&space;i&space;\in&space;[0,&space;hl\_nodes\_num&space;-&space;1]&space;\rightarrow&space;a_i&space;\in&space;\mathbb{Q}&space;\wedge&space;a_i&space;\in&space;(0,&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\exists&space;i&space;\in&space;[0,&space;hl\_nodes\_num&space;-&space;1]&space;\rightarrow&space;a_i&space;\in&space;\mathbb{Q}&space;\wedge&space;a_i&space;\in&space;(0,&space;1)" title="\exists i \in [0, hl\_nodes\_num - 1] \rightarrow a_i \in \mathbb{Q} \wedge a_i \in (0, 1)" /></a>
+
+- 边值权重: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;W" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;W" title="W" /></a>
+
+  > 其中
+  >
+  > <a href="https://www.codecogs.com/eqnedit.php?latex=W&space;=&space;\begin{bmatrix}&space;w_{00}&space;&&space;w_{01}&space;&&space;\cdots&space;&&space;w_{0n}&space;&&space;w_{0b}&space;\\&space;w_{10}&space;&&space;w_{11}&&space;\cdots&space;&&space;w_{1n}&space;&&space;w_{1b}\\&space;\vdots&space;&&space;\vdots&space;&&space;\ddots&space;&&space;\vdots&space;&&space;\vdots\\&space;w_{m0}&space;&&space;w_{m_1}&space;&&space;\cdots&space;&&space;w_{mn}&space;&&space;w_{mb}&space;\\&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?W&space;=&space;\begin{bmatrix}&space;w_{00}&space;&&space;w_{01}&space;&&space;\cdots&space;&&space;w_{0n}&space;&&space;w_{0b}&space;\\&space;w_{10}&space;&&space;w_{11}&&space;\cdots&space;&&space;w_{1n}&space;&&space;w_{1b}\\&space;\vdots&space;&&space;\vdots&space;&&space;\ddots&space;&&space;\vdots&space;&&space;\vdots\\&space;w_{m0}&space;&&space;w_{m_1}&space;&&space;\cdots&space;&&space;w_{mn}&space;&&space;w_{mb}&space;\\&space;\end{bmatrix}" title="W = \begin{bmatrix} w_{00} & w_{01} & \cdots & w_{0n} & w_{0b} \\ w_{10} & w_{11}& \cdots & w_{1n} & w_{1b}\\ \vdots & \vdots & \ddots & \vdots & \vdots\\ w_{m0} & w_{m_1} & \cdots & w_{mn} & w_{mb} \\ \end{bmatrix}" /></a>
+  >
+  > <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;w_{ji}" title="w_{ji}" /></a>表示前一层的结点i连接下一层的结点j的权重
+  >
+  > n 表示前一层结点的个数-1(不算最后恒定的1)
+  >
+  > m 表示后一层结点的个数-1(不算最后恒定的1)
+  >
+  > [![img](https://latex.codecogs.com/gif.latex?%5Cinline&space;w_%7Bib%7D)](https://www.codecogs.com/eqnedit.php?latex=\inline&space;w_{ib}) 为偏置项，用来完成感知器中的偏执操作
 
 - 代价函数: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" title="E_d = \frac{1}{2}\sum_{i\in outputs}{(t_i - y_i)^2}" /></a>
 
 - 激活函数: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;sigmoid(x)=\frac{1}{1&plus;e^{-x}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;sigmoid(x)=\frac{1}{1&plus;e^{-x}}" title="sigmoid(x)=\frac{1}{1+e^{-x}}" /></a>
 
 - 学习速率: <a href="https://www.codecogs.com/eqnedit.php?latex=\eta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\eta" title="\eta" /></a>
-
-- 边值权重: <a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}" title="w_{ji}" /></a>
-
-  > 表示从结点i连到结点j的边值权重
 
 - 结点误差: <a href="https://www.codecogs.com/eqnedit.php?latex=\delta_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\delta_i" title="\delta_i" /></a>
 
@@ -110,6 +130,8 @@
 <a href="https://www.codecogs.com/eqnedit.php?latex={A_{hl\_num&space;-&space;1}}&space;=&space;sigmoid({W_{hl\_num&space;-&space;1}}&space;\cdot&space;{A_{hl\_num&space;-&space;2}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{A_{hl\_num&space;-&space;1}}&space;=&space;sigmoid({W_{hl\_num&space;-&space;1}}&space;\cdot&space;{A_{hl\_num&space;-&space;2}})" title="{A_{hl\_num - 1}} = sigmoid({W_{hl\_num - 1}} \cdot {A_{hl\_num - 2}})" /></a>
 
 ### <a href="https://www.codecogs.com/eqnedit.php?latex={Y}&space;=&space;sigmoid({W_{hl\_num}}&space;\cdot&space;{A_{hl\_num&space;-&space;1}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{Y}&space;=&space;sigmoid({W_{hl\_num}}&space;\cdot&space;{A_{hl\_num&space;-&space;1}})" title="{Y} = sigmoid({W_{hl\_num}} \cdot {A_{hl\_num - 1}})" /></a>
+
+### 随机梯度下降
 
 采用随机梯度下降算法优化训练时间，并且可以有效逃离多元函数局部极小值。
 
