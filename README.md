@@ -107,6 +107,10 @@
   >
   > [![img](https://latex.codecogs.com/gif.latex?%5Cinline&space;w_%7Bib%7D)](https://www.codecogs.com/eqnedit.php?latex=\inline&space;w_{ib}) 为偏置项，用来完成感知器中的偏执操作
 
+- 层间输出: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;v_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;v_{ji}" title="v_{ji}" /></a>
+
+  > 即上一层结点i向下层结点j贡献的值
+
 - 代价函数: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" title="E_d = \frac{1}{2}\sum_{i\in outputs}{(t_i - y_i)^2}" /></a>
 
 - 激活函数: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;sigmoid(x)=\frac{1}{1&plus;e^{-x}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;sigmoid(x)=\frac{1}{1&plus;e^{-x}}" title="sigmoid(x)=\frac{1}{1+e^{-x}}" /></a>
@@ -122,6 +126,8 @@
 ### 正向传播
 
 <a href="https://www.codecogs.com/eqnedit.php?latex={A_0}&space;=&space;sigmoid({W_0}&space;\cdot&space;{X})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{A_0}&space;=&space;sigmoid({W_0}&space;\cdot&space;{X})" title="{A_0} = sigmoid({W_0} \cdot {X})" /></a>
+
+在<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;A_0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;A_0" title="A_0" /></a>最后增加新项，值为1，以下除输出层之外同理。
 
 <a href="https://www.codecogs.com/eqnedit.php?latex={A_1}&space;=&space;sigmoid({W_1}&space;\cdot&space;{A_0})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{A_1}&space;=&space;sigmoid({W_1}&space;\cdot&space;{A_0})" title="{A_1} = sigmoid({W_1} \cdot {A_0})" /></a>
 
@@ -153,9 +159,19 @@
 
 在随机梯度下降的基础上，每次训练更新所有边值权重，即关键点是求<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial w_{ji}}" /></a>
 
-> 设<a href="https://www.codecogs.com/eqnedit.php?latex=net_j&space;=&space;\vec{w_{j*}}&space;\cdot&space;\vec{x_{j*}}&space;=&space;\sum_i{w_{ji}\cdot&space;x_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?net_j&space;=&space;\vec{w_{j*}}&space;\cdot&space;\vec{x_{j*}}&space;=&space;\sum_i{w_{ji}\cdot&space;x_{ji}}" title="net_j = \vec{w_{j*}} \cdot \vec{x_{j*}} = \sum_i{w_{ji}\cdot x_{ji}}" /></a>
+- **求<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{\partial&space;E_d}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial w_{ji}}" /></a>**
 
-则 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;E_d}{\partial&space;w_{ji}}=&space;\frac{\partial&space;E_d}{\partial&space;net_j}&space;\cdot&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;E_d}{\partial&space;w_{ji}}=&space;\frac{\partial&space;E_d}{\partial&space;net_j}&space;\cdot&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial w_{ji}}= \frac{\partial E_d}{\partial net_j} \cdot \frac{\partial net_j}{\partial w_{ji}}" /></a>
+  > 设<a href="https://www.codecogs.com/eqnedit.php?latex=net_j&space;=&space;\vec{w_{j*}}&space;\cdot&space;\vec{x_{j*}}&space;=&space;\sum_i{w_{ji}\cdot&space;x_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?net_j&space;=&space;\vec{w_{j*}}&space;\cdot&space;\vec{x_{j*}}&space;=&space;\sum_i{w_{ji}\cdot&space;x_{ji}}" title="net_j = \vec{w_{j*}} \cdot \vec{x_{j*}} = \sum_i{w_{ji}\cdot x_{ji}}" /></a>
+
+  则 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;E_d}{\partial&space;w_{ji}}=&space;\frac{\partial&space;E_d}{\partial&space;net_j}&space;\cdot&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;E_d}{\partial&space;w_{ji}}=&space;\frac{\partial&space;E_d}{\partial&space;net_j}&space;\cdot&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial w_{ji}}= \frac{\partial E_d}{\partial net_j} \cdot \frac{\partial net_j}{\partial w_{ji}}" /></a>
+
+- **求<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\frac{\partial&space;E_d}{\partial&space;net_j}&space;\cdot&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{\partial&space;E_d}{\partial&space;net_j}&space;\cdot&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" title="\frac{\partial E_d}{\partial net_j} \cdot \frac{\partial net_j}{\partial w_{ji}}" /></a>**
+
+  - 求<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\frac{\partial&space;E_d}{\partial&space;net_j}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{\partial&space;E_d}{\partial&space;net_j}" title="\frac{\partial E_d}{\partial net_j}" /></a>
+
+  - 求<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{\partial&space;net_j}{\partial&space;w_{ji}}" title="\frac{\partial net_j}{\partial w_{ji}}" /></a>
+
+    <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;net_j}{\partial&space;w_{ji}}&space;=&space;\frac{\partial&space;\sum_i{w_{ji}v_{ji}}}{\partial&space;w_{ji}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;net_j}{\partial&space;w_{ji}}&space;=&space;\frac{\partial&space;\sum_i{w_{ji}v_{ji}}}{\partial&space;w_{ji}}" title="\frac{\partial net_j}{\partial w_{ji}} = \frac{\partial \sum_i{w_{ji}v_{ji}}}{\partial w_{ji}}" /></a>
 
 
 
