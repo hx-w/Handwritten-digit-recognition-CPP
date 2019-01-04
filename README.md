@@ -58,7 +58,7 @@
 
 ### 变量声明
 
-- 输入数据: <a href="https://www.codecogs.com/eqnedit.php?latex=(\vec{X},\vec{T})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(\vec{X},\vec{T})" title="(\vec{X},\vec{T})" /></a>
+- 输入数据: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;(\vec{X},\vec{T})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;(\vec{X},\vec{T})" title="(\vec{X},\vec{T})" /></a>
 
   > 其中
   >
@@ -78,9 +78,9 @@
   >
   > <a href="https://www.codecogs.com/eqnedit.php?latex=\exists&space;i&space;\in&space;[0,&space;9]&space;\rightarrow&space;y_i&space;\in&space;\mathbb{Q}&space;\wedge&space;y_i&space;\in&space;(0,&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\exists&space;i&space;\in&space;[0,&space;9]&space;\rightarrow&space;y_i&space;\in&space;\mathbb{Q}&space;\wedge&space;y_i&space;\in&space;(0,&space;1)" title="\exists i \in [0, 9] \rightarrow y_i \in \mathbb{Q} \wedge y_i \in (0, 1)" /></a>
 
-- 代价函数: <a href="https://www.codecogs.com/eqnedit.php?latex=E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" title="E_d = \frac{1}{2}\sum_{i\in outputs}{(t_i - y_i)^2}" /></a>
+- 代价函数: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" title="E_d = \frac{1}{2}\sum_{i\in outputs}{(t_i - y_i)^2}" /></a>
 
-- 激活函数: <a href="https://www.codecogs.com/eqnedit.php?latex=sigmoid(x)=\frac{1}{1&plus;e^{-x}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?sigmoid(x)=\frac{1}{1&plus;e^{-x}}" title="sigmoid(x)=\frac{1}{1+e^{-x}}" /></a>
+- 激活函数: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;sigmoid(x)=\frac{1}{1&plus;e^{-x}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;sigmoid(x)=\frac{1}{1&plus;e^{-x}}" title="sigmoid(x)=\frac{1}{1+e^{-x}}" /></a>
 
 - 学习速率: <a href="https://www.codecogs.com/eqnedit.php?latex=\eta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\eta" title="\eta" /></a>
 
@@ -90,7 +90,7 @@
 
 采用随机梯度下降算法优化训练时间，并且可以有效逃离多元函数局部极小值。
 
-由于<a href="https://www.codecogs.com/eqnedit.php?latex=E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" title="E_d = \frac{1}{2}\sum_{i\in outputs}{(t_i - y_i)^2}" /></a>是输出数据<a href="https://www.codecogs.com/eqnedit.php?latex=y_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_i" title="y_i" /></a>的直接函数，故可将<a href="https://www.codecogs.com/eqnedit.php?latex=E_d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E_d" title="E_d" /></a>看作所有<a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}" title="w_{ji}" /></a>的多元函数。
+由于<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" title="E_d = \frac{1}{2}\sum_{i\in outputs}{(t_i - y_i)^2}" /></a>是输出数据<a href="https://www.codecogs.com/eqnedit.php?latex=y_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_i" title="y_i" /></a>的直接函数，故可将<a href="https://www.codecogs.com/eqnedit.php?latex=E_d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E_d" title="E_d" /></a>看作所有<a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}" title="w_{ji}" /></a>的多元函数。
 
 在某一<a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}" title="w_{ji}" /></a>维度下求该函数梯度的负值即<a href="https://www.codecogs.com/eqnedit.php?latex=w_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_{ji}" title="w_{ji}" /></a>的调整方向。
 
