@@ -18,34 +18,57 @@ Assistant::~Assistant() { }
 
 void Assistant::set_param() {
     printf("Set parameters before working: \n\n");
-    std::string choice;
-    printf("*.Want show every record detail?\ninput yes or no\n>> ");
+    std::string choice, def;
+    printf("*.Want show every record detail?\n  input yes or no\n>> ");
     std::cin >> choice;
     __show_detail = (choice[0] == 'y' || choice[0] == 'Y');
 
     printf("\n*.Want to train before testing or test directly with existing parameters?\n");
-    printf("input yes or no\n>> ");
+    printf("  input yes or no\n>> ");
     std::cin >> choice;
     if (choice[0] == 'y' || choice[0] == 'Y') {
-        printf("\n*.Input the path of train_data\n>> ");
+        def = "../static/train_test/mnist_train.csv";
+        printf("\n*.Input the path of train_data");
+        printf("  (input 'D' as default: \"%s\")\n>> ", def.c_str());
         std::cin >> Data_train;
+        if (Data_train.size() == 1 && (Data_train[0] == 'D' || Data_train[0] == 'd'))
+            Data_train = def;
+
         printf("\n*.Input the records num want to be trained(max 60000)\n>> ");
         std::cin >> train_num;
-        printf("\n*.Input the file name of trained parameters\n>> ");
+
+        printf("\n*.Input the file name of trained parameters\n");
+        def = "../config/param.cfg";
+        printf("  (input 'D' as default: \"%s\")\n>> ", def.c_str());
         std::cin >> Data_save;
+        if (Data_save.size() == 1 && (Data_save[0] == 'D' || Data_save[0] == 'd'))
+            Data_save = def;
     }
     else {
-        printf("\n*.Input the path of parameters_data\n>> ");
+        printf("\n*.Input the path of parameters_data\n");
+        def = "../config/param.cfg";
+        printf("  (input 'D' as default: \"%s\")\n>> ", def.c_str());
         std::cin >> Data_read;
+        if (Data_read.size() == 1 && (Data_read[0] == 'D' || Data_read[0] == 'd'))
+            Data_read = def;
     }
 
-    printf("\n*.Input the path of test_data\n>> ");
+    printf("\n*.Input the path of test_data\n");
+    def = "../static/train_test/mnist_test.csv";
+    printf("  (input 'D' as default: \"%s\")\n>> ", def.c_str());
     std::cin >> Data_test;
+    if (Data_test.size() == 1 && (Data_test[0] == 'D' || Data_test[0] == 'd'))
+        Data_test = def;
+
     printf("\n*.Input the records num want to be tested(max 10000)\n>> ");
     std::cin >> test_num;
 
-    printf("\n*.Input the file name of accuracy rate result\n>> ");
+    printf("\n*.Input the file name of accuracy rate result\n");
+    def = "../result/acc_save.dat";
+    printf("  (input 'D' as default: \"%s\")\n>> ", def.c_str());
     std::cin >> Accu_save;
+    if (Accu_save.size() == 1 && (Accu_save[0] == 'D' || Accu_save[0] == 'd'))
+        Accu_save = def;
 }
 
 void Assistant::working() {

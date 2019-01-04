@@ -22,7 +22,7 @@ const int MAX_TEST  = 10000;
 const int ip_nodes_num = 28 * 28;
 const int op_nodes_num = 10;
 
-const std::string cfg_filename = "./hyparam.cfg";
+const std::string cfg_filename = "../config/hyparam.cfg";
 const int MAX_VALUE = (1 << 8) - 1;
 
 class Matrix;
