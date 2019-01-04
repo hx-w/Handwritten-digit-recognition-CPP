@@ -59,11 +59,11 @@
 
 ### 变量声明
 
-- 输入数据: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;(\vec{X},\vec{T})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;(\vec{X},\vec{T})" title="(\vec{X},\vec{T})" /></a>
+- 输入数据: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;({X},{T})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;({X},{T})" title="({X},{T})" /></a>
 
   > 其中
   >
-  > <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{X}=\begin{bmatrix}&space;x_0&space;\\&space;x_1&space;\\&space;\cdots&space;\\&space;x_i&space;\\&space;\cdots&space;\\&space;x_{783}&space;\\&space;1&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{X}=\begin{bmatrix}&space;x_0&space;\\&space;x_1&space;\\&space;\cdots&space;\\&space;x_i&space;\\&space;\cdots&space;\\&space;x_{783}&space;\\&space;1&space;\end{bmatrix}" title="\vec{X}=\begin{bmatrix} x_0 \\ x_1 \\ \cdots \\ x_i \\ \cdots \\ x_{783} \\ 1 \end{bmatrix}" /></a>为输入层， <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{T}=\begin{bmatrix}&space;t_0&space;\\&space;t_1&space;\\&space;\cdots&space;\\&space;t_i&space;\\&space;\cdots&space;\\&space;t_{9}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{T}=\begin{bmatrix}&space;t_0&space;\\&space;t_1&space;\\&space;\cdots&space;\\&space;t_i&space;\\&space;\cdots&space;\\&space;t_{9}&space;\end{bmatrix}" title="\vec{T}=\begin{bmatrix} t_0 \\ t_1 \\ \cdots \\ t_i \\ \cdots \\ t_{9} \end{bmatrix}" /></a>为标签
+  > <a href="https://www.codecogs.com/eqnedit.php?latex={X}=\begin{bmatrix}&space;x_0&space;\\&space;x_1&space;\\&space;\cdots&space;\\&space;x_i&space;\\&space;\cdots&space;\\&space;x_{783}&space;\\&space;1&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{X}=\begin{bmatrix}&space;x_0&space;\\&space;x_1&space;\\&space;\cdots&space;\\&space;x_i&space;\\&space;\cdots&space;\\&space;x_{783}&space;\\&space;1&space;\end{bmatrix}" title="{X}=\begin{bmatrix} x_0 \\ x_1 \\ \cdots \\ x_i \\ \cdots \\ x_{783} \\ 1 \end{bmatrix}" /></a></a>为输入层， <a href="https://www.codecogs.com/eqnedit.php?latex={T}=\begin{bmatrix}&space;t_0&space;\\&space;t_1&space;\\&space;\cdots&space;\\&space;t_i&space;\\&space;\cdots&space;\\&space;t_{9}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{T}=\begin{bmatrix}&space;t_0&space;\\&space;t_1&space;\\&space;\cdots&space;\\&space;t_i&space;\\&space;\cdots&space;\\&space;t_{9}&space;\end{bmatrix}" title="{T}=\begin{bmatrix} t_0 \\ t_1 \\ \cdots \\ t_i \\ \cdots \\ t_{9} \end{bmatrix}" /></a>为标签
   >
   > 且
   >
@@ -71,15 +71,17 @@
   >
   > <a href="https://www.codecogs.com/eqnedit.php?latex=\exists&space;i&space;\in[0,&space;9]&space;\rightarrow&space;t_i&space;\in&space;\{0,&space;1\}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\exists&space;i&space;\in[0,&space;9]&space;\rightarrow&space;t_i&space;\in&space;\{0,&space;1\}" title="\exists i \in[0, 9] \rightarrow t_i \in \{0, 1\}" /></a>
 
-- 输出数据: <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{Y}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{Y}" title="\vec{Y}" /></a>
+- 输出数据: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;Y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;Y" title="Y" /></a>
 
-  > <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{Y}&space;=&space;\begin{bmatrix}&space;y_0\\&space;y_1\\&space;\cdots\\&space;y_i&space;\\&space;\cdots&space;\\&space;y_9&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{Y}&space;=&space;\begin{bmatrix}&space;y_0\\&space;y_1\\&space;\cdots\\&space;y_i&space;\\&space;\cdots&space;\\&space;y_9&space;\end{bmatrix}" title="\vec{Y} = \begin{bmatrix} y_0\\ y_1\\ \cdots\\ y_i \\ \cdots \\ y_9 \end{bmatrix}" /></a>
+  > <a href="https://www.codecogs.com/eqnedit.php?latex={Y}&space;=&space;\begin{bmatrix}&space;y_0\\&space;y_1\\&space;\cdots\\&space;y_i&space;\\&space;\cdots&space;\\&space;y_9&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{Y}&space;=&space;\begin{bmatrix}&space;y_0\\&space;y_1\\&space;\cdots\\&space;y_i&space;\\&space;\cdots&space;\\&space;y_9&space;\end{bmatrix}" title="{Y} = \begin{bmatrix} y_0\\ y_1\\ \cdots\\ y_i \\ \cdots \\ y_9 \end{bmatrix}" /></a>
   >
   > 且
   >
   > <a href="https://www.codecogs.com/eqnedit.php?latex=\exists&space;i&space;\in&space;[0,&space;9]&space;\rightarrow&space;y_i&space;\in&space;\mathbb{Q}&space;\wedge&space;y_i&space;\in&space;(0,&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\exists&space;i&space;\in&space;[0,&space;9]&space;\rightarrow&space;y_i&space;\in&space;\mathbb{Q}&space;\wedge&space;y_i&space;\in&space;(0,&space;1)" title="\exists i \in [0, 9] \rightarrow y_i \in \mathbb{Q} \wedge y_i \in (0, 1)" /></a>
 
-- 隐藏层: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\vec{A_k}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\vec{A_k}" title="\vec{A_k}" /></a>
+- 隐藏层: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;A" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;A" title="A" /></a>
+
+  > <a href="https://www.codecogs.com/eqnedit.php?latex={A}=\begin{bmatrix}&space;a_0&space;\\&space;a_1&space;\\&space;\cdots&space;\\&space;a_i&space;\\&space;\cdots&space;\\&space;a_{hl\_nodes\_num&space;-1}&space;\\&space;1&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{A}=\begin{bmatrix}&space;a_0&space;\\&space;a_1&space;\\&space;\cdots&space;\\&space;a_i&space;\\&space;\cdots&space;\\&space;a_{hl\_nodes\_num&space;-1}&space;\\&space;1&space;\end{bmatrix}" title="{A}=\begin{bmatrix} a_0 \\ a_1 \\ \cdots \\ a_i \\ \cdots \\ a_{hl\_nodes\_num -1} \\ 1 \end{bmatrix}" /></a>
 
 - 代价函数: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;E_d&space;=&space;\frac{1}{2}\sum_{i\in&space;outputs}{(t_i&space;-&space;y_i)^2}" title="E_d = \frac{1}{2}\sum_{i\in outputs}{(t_i - y_i)^2}" /></a>
 
@@ -99,19 +101,15 @@
 
 ### 正向传播
 
-> 设隐藏层数hl_num
+<a href="https://www.codecogs.com/eqnedit.php?latex={A_0}&space;=&space;sigmoid({W_0}&space;\cdot&space;{X})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{A_0}&space;=&space;sigmoid({W_0}&space;\cdot&space;{X})" title="{A_0} = sigmoid({W_0} \cdot {X})" /></a>
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\vec{A_0}&space;=&space;sigmoid(\vec{W_0}&space;\cdot&space;\vec{X})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{A_0}&space;=&space;sigmoid(\vec{W_0}&space;\cdot&space;\vec{X})" title="\vec{A_0} = sigmoid(\vec{W_0} \cdot \vec{X})" /></a>
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=\vec{A_1}&space;=&space;sigmoid(\vec{W_1}&space;\cdot&space;\vec{A_0})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{A_1}&space;=&space;sigmoid(\vec{W_1}&space;\cdot&space;\vec{A_0})" title="\vec{A_1} = sigmoid(\vec{W_1} \cdot \vec{A_0})" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex={A_1}&space;=&space;sigmoid({W_1}&space;\cdot&space;{A_0})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{A_1}&space;=&space;sigmoid({W_1}&space;\cdot&space;{A_0})" title="{A_1} = sigmoid({W_1} \cdot {A_0})" /></a>
 
 ...
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\vec{A_{hl\_num&space;-&space;1}}&space;=&space;sigmoid(\vec{W_{hl\_num&space;-&space;1}}&space;\cdot&space;\vec{A_{hl\_num&space;-&space;2}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{A_{hl\_num&space;-&space;1}}&space;=&space;sigmoid(\vec{W_{hl\_num&space;-&space;1}}&space;\cdot&space;\vec{A_{hl\_num&space;-&space;2}})" title="\vec{A_{hl\_num - 1}} = sigmoid(\vec{W_{hl\_num - 1}} \cdot \vec{A_{hl\_num - 2}})" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex={A_{hl\_num&space;-&space;1}}&space;=&space;sigmoid({W_{hl\_num&space;-&space;1}}&space;\cdot&space;{A_{hl\_num&space;-&space;2}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{A_{hl\_num&space;-&space;1}}&space;=&space;sigmoid({W_{hl\_num&space;-&space;1}}&space;\cdot&space;{A_{hl\_num&space;-&space;2}})" title="{A_{hl\_num - 1}} = sigmoid({W_{hl\_num - 1}} \cdot {A_{hl\_num - 2}})" /></a>
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\vec{Y}&space;=&space;sigmoid(\vec{W_{hl\_num}}&space;\cdot&space;\vec{A_{hl\_num&space;-&space;1}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{Y}&space;=&space;sigmoid(\vec{W_{hl\_num}}&space;\cdot&space;\vec{A_{hl\_num&space;-&space;1}})" title="\vec{Y} = sigmoid(\vec{W_{hl\_num}} \cdot \vec{A_{hl\_num - 1}})" /></a>
-
-### 随机梯度下降
+### <a href="https://www.codecogs.com/eqnedit.php?latex={Y}&space;=&space;sigmoid({W_{hl\_num}}&space;\cdot&space;{A_{hl\_num&space;-&space;1}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{Y}&space;=&space;sigmoid({W_{hl\_num}}&space;\cdot&space;{A_{hl\_num&space;-&space;1}})" title="{Y} = sigmoid({W_{hl\_num}} \cdot {A_{hl\_num - 1}})" /></a>
 
 采用随机梯度下降算法优化训练时间，并且可以有效逃离多元函数局部极小值。
 
