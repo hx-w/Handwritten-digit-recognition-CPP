@@ -11,13 +11,10 @@
 - 训练与测试均采用MNIST数据集。
 - 采用全连接神经网络，相关超参数:
 
-> - 输入层：$28\times28=784$维列向量。
->
-> - 输出层：$10$维列向量。
->
+> - 输入层：<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;28\times28=784" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;28\times28=784" title="28\times28=784" /></a>维列向量。
+> - 输出层：10维列向量。
 > - 隐藏层：1层，300维列向量。
->
-> - 学习速率：$ \eta=0.35 $
+> - 学习速率: <a href="https://www.codecogs.com/eqnedit.php?latex=\eta=0.35" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\eta=0.35" title="\eta=0.35" /></a>
 
 - 相关算法:
 
@@ -54,9 +51,9 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
 每组数据包含$28\times28 + 1=785$项:
 
-- 第$1$项，数据标签$label$，取值$[0,9]$。
+- 第1项，数据标签label，取值[0,9]。
 
-- 其余$28\times28=784$项是图片每个像素的灰度，取值$[0,255]$。
+- 其余784项是图片每个像素的灰度，取值[0,255]。
 
 ## 文件目录
 
@@ -175,7 +172,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
   位置：  "MLP_Neural_Network.h" >row 21
 
-  初始值: $0.35$
+  初始值: 0.35
 
   调整建议: 
 
@@ -187,7 +184,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
   位置:	"MLP_Neural_Network.h" >row 22
 
-  初始值: $1$
+  初始值: 1
 
   调整建议:
 
@@ -199,7 +196,7 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
   位置:	"MLP_Neural_Network.h" >row 25
 
-  初始值:  $300$
+  初始值:  300
 
   调整建议:
 
@@ -207,27 +204,27 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
   对隐藏层维度即隐藏层结点个数的取值有以下*经验公式*:
 
-  $m = \sqrt{n+l}+\alpha$ 
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;m&space;=&space;\sqrt{n&plus;l}&plus;\alpha" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;m&space;=&space;\sqrt{n&plus;l}&plus;\alpha" title="m = \sqrt{n+l}+\alpha" /></a>
 
-  $m = m=\log_2{n}$
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;m=\log_2{n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;m=\log_2{n}" title="m=\log_2{n}" /></a>
 
-  $m=\sqrt{nl}$
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;m=\sqrt{nl}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;m=\sqrt{nl}" title="m=\sqrt{nl}" /></a>
 
   其中:
 
-  $m: \text{隐藏层结点数}$
+  m: 隐藏层结点数
 
-  $n : \text{输入层结点数}$
+  n: 输入层结点数
 
-  $l: \text{输出层结点数}$
+  l: 输出层结点数
 
-  $\alpha \in [1, 10]$
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\alpha&space;\in&space;[1,&space;10]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\alpha&space;\in&space;[1,&space;10]" title="\alpha \in [1, 10]" /></a>
 
   > ps: 由于程序设计的问题，所有隐藏层的维度都将是`hl_nodes_num`，如果有需要可以改进为不同隐藏层的维度不同。	 
 
 ### 输入预处理
 
-由于输入层元素大小在$0$到$255$之间不利于训练，需要进行预处理。
+由于输入层元素大小在0到255之间不利于训练，需要进行预处理。
 
 - 预处理函数: `inline void Network::input_prep(std::vector<double> &)`
 
