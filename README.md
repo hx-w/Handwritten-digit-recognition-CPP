@@ -9,12 +9,11 @@
 本项目利用全连接神经网络对手写体数字进行训练与识别。
 
 - 训练与测试均采用MNIST数据集。
-- 采用全连接神经网络，相关超参数:
+- 采用全连接神经网络，相关超参数存储在`.\config\hyparam.cfg`下
 
-> - 输入层：<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;28\times28=784" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;28\times28=784" title="28\times28=784" /></a>维列向量。
-> - 输出层：10维列向量。
-> - 隐藏层：1层，300维列向量。
-> - 学习速率: <a href="https://www.codecogs.com/eqnedit.php?latex=\eta=0.35" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\eta=0.35" title="\eta=0.35" /></a>
+> - hl_num 隐藏层数
+> - hl_nodes_num 隐藏层结点数
+> - rate 学习速率
 
 - 相关算法:
 
@@ -27,14 +26,20 @@
 
 ## 数据结构
 
+待补
+
 
 ## 算法推导
 
 ### 随机梯度下降
 
+待补
+
 [参考内容](https://www.zybuluo.com/hanbingtao/note/448086)
 
 ### 反向传播算法
+
+待补
 
 [参考内容](https://www.zybuluo.com/hanbingtao/note/476663)
 
@@ -63,14 +68,25 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 ```
 .
 ├── bin
-|    ├── MNIST.zip        # MNIST原始数据集
-|    └── convert.py       # py2脚本，可将MNIST原始数据集转化为*.csv格式 (使用时修改路径)
+|    ├── MNIST.zip         # MNIST原始数据集
+|    └── convert.py        # py2脚本，可将MNIST原始数据集转化为*.csv格式 (使用时修改路径)
+├── config
+|    ├── hyparam.cfg       # 超参数配置
+|    └── param.cfg         # 训练参数配置(可重新训练)
 ├── img
-|    ├── frame.jpg        # 展示图1
-|    ├── release.jpg      # 效果图1
-|    └── param_set.jpg    # 效果图2
+|    ├── frame.jpg         # 展示图1
+|    ├── release.jpg       # 效果图1
+|    └── param_set.jpg     # 效果图2
+├── params                 # 参与者贡献的数据文件集合
+|    ├── ...
+|    └── A_B_C.zip         # A:参与者姓名   B:隐藏层数   C:隐藏层结点数
+|         ├── hyparam.cfg  # 该测试所用的超参数配置
+|         ├── param.cfg    # 训练得到的参数配置
+|         └── README.txt   # 此次测试的简单说明(包括训练组数，测试组数，准确率以及对源码的改进等)
 ├── release
 |    └── Handwriting_digit_rec_MLP.exe    # 可执行程序
+├── result
+|    └── acc_save.dat      # 测试的结果保存文件(默认) 
 ├── src
 |    ├── Assistant.cpp     # 训练助手类实现
 |    ├── Assistant.h       # 训练助手类定义
@@ -80,8 +96,6 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 |    ├── MLP_Neural_Network.h    # 多层全连接神经网络类定义
 |    └── demo.cpp          # 主函数入口，效果展示
 ├── static
-|    ├── acc_save.dat      # 测试结果
-|    ├── param_save.dat    # 神经网络参数
 |    └── train_test.zip    # 训练和测试数据(*.csv)，使用时解压
 └── README.md              # 说明文档
 ```
@@ -90,15 +104,29 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
 ## 使用方法
 
+该流程仅作演示。
+
 > - 测试环境：windows 10
-> - 命令行： `git bash`，`cmd`做相应处理
 >
-> - 现有数据: `./static/param_save.dat`是训练`./static/train_test/mnist_train.csv`20000组得到的
-> - 测试结果：测试结果保存在`./static/acc_save.dat`中，在之前的测试结果后追加
+> - 命令行： `cmd`
+>
+> - 超参数配置: `.\config\hyparam.cfg`
+>
+>   > 隐藏层: 1
+>   >
+>   > 隐藏层结点: 300
+>   >
+>   > 学习速率: 0.35
+>
+> - 训练参数配置: `.\config\param.cfg`
+>
+>   > 训练`.\static\train_test\mnist_train.csv` 60000组得到
+>
+> - 测试结果：测试结果默认保存在`.\result\acc_save.dat`中，在之前的测试结果后追加
 
-1. 命令行当前在工作目录$./$即`./Handwritten-digit-recognition-CPP/`下。
+1. 命令行当前在`release`目录即`.\release\`下。
 
-2. `./release/Handwriting_digit_rec_MLP.exe`运行程序
+2. `.\Handwriting_digit_rec_MLP.exe`运行程序
 
    ![re](./img/release.jpg)
 
