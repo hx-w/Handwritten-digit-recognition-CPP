@@ -488,6 +488,27 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
   该方法将输入进行二值化离散处理，可以考虑多分几种情况，把离散的程度更加连续。
 
-## 总结
+## 分析
+
+> 对通用的全连接神经网络模型
+>
+> 设
+>
+> - 输入层结点数目: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;N_I" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;N_I" title="N_I" /></a>
+>
+> - 输出层结点数目: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;N_O" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;N_O" title="N_O" /></a>
+> - 隐藏层数目: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;Hl" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;Hl" title="Hl" /></a>
+> - 第<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;i" title="i" /></a>层隐藏层的结点数目: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;N_A_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;N_A_i" title="N_A_i" /></a>
+
+- 正向传播
+
+  计算步骤:
+
+  <a href="https://www.codecogs.com/eqnedit.php?latex=T_{forward}&space;=N_A_0&space;\cdot&space;(N_I&space;&plus;&space;1)&space;&plus;&space;\sum_i^{Hl&space;-&space;2}N_A_{i&plus;1}&space;\cdot&space;(N_A_i&space;&plus;&space;1)&space;&plus;&space;N_O&space;\cdot&space;(N_A_{Hl&space;-&space;1}&space;&plus;&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?T_{forward}&space;=N_A_0&space;\cdot&space;(N_I&space;&plus;&space;1)&space;&plus;&space;\sum_i^{Hl&space;-&space;2}N_A_{i&plus;1}&space;\cdot&space;(N_A_i&space;&plus;&space;1)&space;&plus;&space;N_O&space;\cdot&space;(N_A_{Hl&space;-&space;1}&space;&plus;&space;1)" title="T_{forward} =N_A_0 \cdot (N_I + 1) + \sum_i^{Hl - 2}N_A_{i+1} \cdot (N_A_i + 1) + N_O \cdot (N_A_{Hl - 1} + 1)" /></a>
+
+- 反向传播
+
+  计算步骤:
+
 
 全连接神经网络还有很多需要优化的地方，以后继续写，将来可能需要用别的模型来优化。
