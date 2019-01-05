@@ -19,7 +19,7 @@
   - [说明](#说明)
   - [超参数](#超参数)
   - [输入预处理](#输入预处理)
-- [总结](#总结)
+- [分析总结](#分析总结)
 
 ---
 
@@ -486,9 +486,9 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 
 - 调整建议:
 
-  该方法将输入进行二值化离散处理，可以考虑多分几种情况，把离散的程度更加连续。
+  该方法将输入进行二值化离散处理，可以考虑多分几种情况，把离散的程度增大。
 
-## 分析
+## 分析总结
 
 > 对通用的全连接神经网络模型
 >
@@ -499,16 +499,43 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 > - 输出层结点数目: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;N_O" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;N_O" title="N_O" /></a>
 > - 隐藏层数目: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;Hl" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;Hl" title="Hl" /></a>
 > - 第<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;i" title="i" /></a>层隐藏层的结点数目: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;N_A_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;N_A_i" title="N_A_i" /></a>
+> - 训练测试数据组数: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;M" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;M" title="M" /></a> 
+> - 模型边值权重总数: <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;N_w" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;N_w" title="N_w" /></a>
+
+- 输入预处理
+
+  计算次数
+
+  <a href="https://www.codecogs.com/eqnedit.php?latex=T_{prep}&space;=&space;N_I" target="_blank"><img src="https://latex.codecogs.com/gif.latex?T_{prep}&space;=&space;N_I" title="T_{prep} = N_I" /></a>
 
 - 正向传播
 
-  计算步骤:
+  计算次数:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex=T_{forward}&space;=N_A_0&space;\cdot&space;(N_I&space;&plus;&space;1)&space;&plus;&space;\sum_i^{Hl&space;-&space;2}N_A_{i&plus;1}&space;\cdot&space;(N_A_i&space;&plus;&space;1)&space;&plus;&space;N_O&space;\cdot&space;(N_A_{Hl&space;-&space;1}&space;&plus;&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?T_{forward}&space;=N_A_0&space;\cdot&space;(N_I&space;&plus;&space;1)&space;&plus;&space;\sum_i^{Hl&space;-&space;2}N_A_{i&plus;1}&space;\cdot&space;(N_A_i&space;&plus;&space;1)&space;&plus;&space;N_O&space;\cdot&space;(N_A_{Hl&space;-&space;1}&space;&plus;&space;1)" title="T_{forward} =N_A_0 \cdot (N_I + 1) + \sum_i^{Hl - 2}N_A_{i+1} \cdot (N_A_i + 1) + N_O \cdot (N_A_{Hl - 1} + 1)" /></a>
+  <a href="https://www.codecogs.com/eqnedit.php?latex=T_{forward}&space;=N_A_0&space;\cdot&space;(N_I&space;&plus;&space;1)&space;&plus;&space;\sum_{i&space;=&space;0}^{Hl&space;-&space;2}N_A_{i&plus;1}&space;\cdot&space;(N_A_i&space;&plus;&space;1)&space;&plus;&space;N_O&space;\cdot&space;(N_A_{Hl&space;-&space;1}&space;&plus;&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?T_{forward}&space;=N_A_0&space;\cdot&space;(N_I&space;&plus;&space;1)&space;&plus;&space;\sum_{i&space;=&space;0}^{Hl&space;-&space;2}N_A_{i&plus;1}&space;\cdot&space;(N_A_i&space;&plus;&space;1)&space;&plus;&space;N_O&space;\cdot&space;(N_A_{Hl&space;-&space;1}&space;&plus;&space;1)" title="T_{forward} =N_A_0 \cdot (N_I + 1) + \sum_{i = 0}^{Hl - 2}N_A_{i+1} \cdot (N_A_i + 1) + N_O \cdot (N_A_{Hl - 1} + 1)" /></a>
+
+  且
+
+  <a href="https://www.codecogs.com/eqnedit.php?latex=N_w&space;=&space;T_{forward}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?N_w&space;=&space;T_{forward}" title="N_w = T_{forward}" /></a>
 
 - 反向传播
 
-  计算步骤:
+  计算次数:
 
+  <a href="https://www.codecogs.com/eqnedit.php?latex=T_{backward}&space;=\left&space;(T_{forward}&space;-&space;N_A_0&space;\cdot&space;(N_I&space;&plus;&space;1)&space;&plus;&space;N_O&space;\right)&space;&plus;&space;\left(T_{forward}&space;\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?T_{backward}&space;=\left&space;(T_{forward}&space;-&space;N_A_0&space;\cdot&space;(N_I&space;&plus;&space;1)&space;&plus;&space;N_O&space;\right)&space;&plus;&space;\left(T_{forward}&space;\right&space;)" title="T_{backward} =\left (T_{forward} - N_A_0 \cdot (N_I + 1) + N_O \right) + \left(T_{forward} \right )" /></a>
+
+- 结果统计
+
+  计算次数:
+
+  <a href="https://www.codecogs.com/eqnedit.php?latex=T_{res}&space;=&space;N_O" target="_blank"><img src="https://latex.codecogs.com/gif.latex?T_{res}&space;=&space;N_O" title="T_{res} = N_O" /></a>
+
+故此模型算法复杂度为:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=O(M&space;\cdot(T_{prep}&space;&plus;&space;T_{forward}&space;&plus;&space;T_{backward}&space;&plus;&space;T_{res}))&space;\\&space;=&space;O(M&space;\cdot&space;(N_I&space;&plus;&space;N_O&space;&plus;&space;3&space;\cdot&space;T_{forward}&space;-&space;N_A_0&space;\cdot&space;(N_I&space;&plus;&space;1)&space;&plus;&space;N_O))&space;\\&space;=&space;O(M\cdot&space;(N_I&space;&plus;&space;2N_O&space;&plus;&space;3N_A_0&space;\cdot&space;N_I&space;&plus;&space;3\sum_i{N_A_i&space;\cdot&space;N_A_{i&space;&plus;&space;1}}&space;&plus;&space;N_O&space;\cdot&space;N_A_{Hl&space;-&space;1}&space;-&space;N_A_0&space;\cdot&space;N_I&space;&plus;&space;N_O))&space;\\&space;=&space;O(M\cdot&space;(N_I&space;&plus;&space;N_O&space;&plus;&space;N_A_0&space;\cdot&space;N_I&space;&plus;&space;N_O&space;\cdot&space;N_A_{Hl&space;-&space;1}&plus;\sum_i{N_A_i&space;\cdot&space;N_A_{i&space;&plus;&space;1}})&space;)\\&space;=&space;O&space;(M&space;\cdot&space;(N_A_0&space;\cdot&space;N_I&space;&plus;&space;N_O&space;\cdot&space;N_A_{Hl&space;-&space;1}&plus;\sum_i{N_A_i&space;\cdot&space;N_A_{i&space;&plus;&space;1}}))&space;\\&space;=&space;O(M&space;\cdot&space;N_w)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?O(M&space;\cdot(T_{prep}&space;&plus;&space;T_{forward}&space;&plus;&space;T_{backward}&space;&plus;&space;T_{res}))&space;\\&space;=&space;O(M&space;\cdot&space;(N_I&space;&plus;&space;N_O&space;&plus;&space;3&space;\cdot&space;T_{forward}&space;-&space;N_A_0&space;\cdot&space;(N_I&space;&plus;&space;1)&space;&plus;&space;N_O))&space;\\&space;=&space;O(M\cdot&space;(N_I&space;&plus;&space;2N_O&space;&plus;&space;3N_A_0&space;\cdot&space;N_I&space;&plus;&space;3\sum_i{N_A_i&space;\cdot&space;N_A_{i&space;&plus;&space;1}}&space;&plus;&space;N_O&space;\cdot&space;N_A_{Hl&space;-&space;1}&space;-&space;N_A_0&space;\cdot&space;N_I&space;&plus;&space;N_O))&space;\\&space;=&space;O(M\cdot&space;(N_I&space;&plus;&space;N_O&space;&plus;&space;N_A_0&space;\cdot&space;N_I&space;&plus;&space;N_O&space;\cdot&space;N_A_{Hl&space;-&space;1}&plus;\sum_i{N_A_i&space;\cdot&space;N_A_{i&space;&plus;&space;1}})&space;)\\&space;=&space;O&space;(M&space;\cdot&space;(N_A_0&space;\cdot&space;N_I&space;&plus;&space;N_O&space;\cdot&space;N_A_{Hl&space;-&space;1}&plus;\sum_i{N_A_i&space;\cdot&space;N_A_{i&space;&plus;&space;1}}))&space;\\&space;=&space;O(M&space;\cdot&space;N_w)" title="O(M \cdot(T_{prep} + T_{forward} + T_{backward} + T_{res})) \\ = O(M \cdot (N_I + N_O + 3 \cdot T_{forward} - N_A_0 \cdot (N_I + 1) + N_O)) \\ = O(M\cdot (N_I + 2N_O + 3N_A_0 \cdot N_I + 3\sum_i{N_A_i \cdot N_A_{i + 1}} + N_O \cdot N_A_{Hl - 1} - N_A_0 \cdot N_I + N_O)) \\ = O(M\cdot (N_I + N_O + N_A_0 \cdot N_I + N_O \cdot N_A_{Hl - 1}+\sum_i{N_A_i \cdot N_A_{i + 1}}) )\\ = O (M \cdot (N_A_0 \cdot N_I + N_O \cdot N_A_{Hl - 1}+\sum_i{N_A_i \cdot N_A_{i + 1}})) \\ = O(M \cdot N_w)" /></a>  
+
+可见 
+
+在数据组数固定的情况下程序的运行速度与训练参数个数成正比，但是由于常数项很大，导致了反向传播过程中计算缓慢。
 
 全连接神经网络还有很多需要优化的地方，以后继续写，将来可能需要用别的模型来优化。
