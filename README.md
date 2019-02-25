@@ -255,6 +255,9 @@ MNIST数据集不能直接使用，用脚本对原始数据处理，得到两份
 |         ├── hyparam.cfg  # 该测试所用的超参数配置
 |         ├── param.cfg    # 训练得到的参数配置
 |         └── README.txt   # 此次测试的简单说明(包括训练组数，测试组数，准确率以及对源码的改进等)
+|
+├── real-test              # 自定义测试(TODO)
+|    └── ...
 ├── release
 |    └── Handwriting_digit_rec_MLP.exe    # 可执行程序
 ├── result

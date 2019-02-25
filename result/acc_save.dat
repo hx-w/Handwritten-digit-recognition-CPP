@@ -12,3 +12,226 @@ Test_num : 10000
 -*- Accuracy -*-: 0.9536
 Finish time: 1-4 16:40:6
 __________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 12:23:37
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.7386
+Finish time: 1-5 12:24:7
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 12:24:54
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9277
+Finish time: 1-5 12:26:20
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 12:27:29
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9319
+Finish time: 1-5 12:30:22
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 12:31:0
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9247
+Finish time: 1-5 12:33:46
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 12:53:40
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9397
+Finish time: 1-5 12:56:22
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 12:57:25
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9528
+Finish time: 1-5 12:59:37
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 13:0:40
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9556
+Finish time: 1-5 13:3:24
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 13:34:11
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.949
+Finish time: 1-5 13:37:21
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 13:39:6
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9337
+Finish time: 1-5 13:43:42
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 13:49:15
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.8998
+Finish time: 1-5 13:52:52
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 13:53:48
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.951
+Finish time: 1-5 13:57:41
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 14:3:46
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.953
+Finish time: 1-5 14:7:31
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 14:33:0
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.957
+Finish time: 1-5 14:36:26
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 14:36:51
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.955
+Finish time: 1-5 14:40:6
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 14:47:23
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9566
+Finish time: 1-5 14:51:19
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 15:52:23
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.0958
+Finish time: 1-5 15:52:48
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 15:53:20
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9166
+Finish time: 1-5 15:53:41
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 15:56:39
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.951
+Finish time: 1-5 15:57:26
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 16:3:14
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9496
+Finish time: 1-5 16:3:57
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 16:4:46
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9573
+Finish time: 1-5 16:6:29
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 16:10:13
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9579
+Finish time: 1-5 16:12:15
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 16:18:34
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9524
+Finish time: 1-5 16:20:31
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 16:21:5
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9607
+Finish time: 1-5 16:33:15
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 16:33:43
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9584
+Finish time: 1-5 16:37:11
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-5 18:42:53
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9501
+Finish time: 1-5 18:46:43
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-20 22:0:35
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9551
+Finish time: 1-20 22:4:28
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 1-20 22:8:1
+Train_num: 10000
+Param    : ../config/param.cfg
+Test_num : 5000
+-*- Accuracy -*-: 0.8958
+Finish time: 1-20 22:8:40
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 2-25 10:4:54
+Param: ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9185
+Finish time: 2-25 10:5:5
+__________*_____ * ______*_________
