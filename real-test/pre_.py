@@ -13,8 +13,8 @@ class Image_helper:
     __height = 0
     __width = 0
     __threthod = 125
-    __gard = 111
-    __pad = 6
+    __gard = 90
+    __pad = 5
     __smpic = []
     
     def __init__(self, *args, **kwargs):
