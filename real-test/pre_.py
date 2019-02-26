@@ -17,7 +17,7 @@ class Image_helper:
     __smpic = []
     
     def __init__(self, *args, **kwargs):
-        self.__path = sys.path[0] + '\\6.png'
+        self.__path = sys.path[0] + '\\canvas.png'
     
     def open_pic(self):
         self.__pic = Image.open(self.__path).convert('L')
@@ -94,7 +94,7 @@ class Image_helper:
             cnt += 1
             self.__base = Image.new('RGB', (self.__height, self.__width)).convert('L')
             self.__base.paste(pic, (self.__pad, self.__pad, self.__width - self.__pad, self.__height - self.__pad))
-            self.__base.save(self.__path.replace('6.png', str(cnt) + '.jpg'))
+            self.__base.save(self.__path.replace('canvas.png', str(cnt) + '.jpg'))
             # save numbers
             with open(sys.path[0] + '\\' + self.__tmp, "w") as outFile:
                 for h in range(0, self.__height):
