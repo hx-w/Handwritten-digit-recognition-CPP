@@ -13,8 +13,8 @@ class Image_helper:
     __height = 0
     __width = 0
     __threthod = 125
-    __gard = 90
-    __pad = 5
+    __gard = 110
+    __pad = 6
     __smpic = []
     
     def __init__(self, *args, **kwargs):
@@ -34,7 +34,7 @@ class Image_helper:
                 if pix < self.__gard:
                     self.__pic.putpixel((x, y), 0)
                 elif pix < 200:
-                    self.__pic.putpixel((x, y), pix + 50)
+                    self.__pic.putpixel((x, y), pix + 55)
         self.__pic.save(self.__path.replace('png', 'jpg'))
 
     def __col_cut(self):
