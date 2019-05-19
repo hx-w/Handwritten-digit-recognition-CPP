@@ -1,63 +1,74 @@
 ________________ * ________________
-Start time: 3-19 16:1:36
+Start time: 5-17 14:34:7
 Train_num: 60000
 Param    : ../config/param.cfg
 Test_num : 10000
--*- Accuracy -*-: 0.9231
-Finish time: 3-19 16:2:39
+-*- Accuracy -*-: 0.9775
+Finish time: 5-17 14:36:24
 __________*_____ * ______*_________
 ________________ * ________________
-Start time: 3-19 16:3:24
+Start time: 5-17 14:36:26
 Train_num: 60000
 Param    : ../config/param.cfg
 Test_num : 10000
--*- Accuracy -*-: 0.9094
-Finish time: 3-19 16:4:39
+-*- Accuracy -*-: 0.9777
+Finish time: 5-17 14:38:43
 __________*_____ * ______*_________
 ________________ * ________________
-Start time: 3-19 16:5:13
+Start time: 5-17 14:38:46
 Train_num: 60000
 Param    : ../config/param.cfg
 Test_num : 10000
--*- Accuracy -*-: 0.9042
-Finish time: 3-19 16:6:9
+-*- Accuracy -*-: 0.9768
+Finish time: 5-17 14:41:2
 __________*_____ * ______*_________
 ________________ * ________________
-Start time: 3-19 16:7:25
+Start time: 5-17 14:50:6
+________________ * ________________
+Start time: 5-17 14:51:55
 Train_num: 60000
 Param    : ../config/param.cfg
 Test_num : 10000
--*- Accuracy -*-: 0.9505
-Finish time: 3-19 16:9:21
+-*- Accuracy -*-: 0.9784
+Finish time: 5-17 14:54:11
 __________*_____ * ______*_________
 ________________ * ________________
-Start time: 3-19 16:11:39
-Param: ../config/param.cfg
-Test_num : 10000
--*- Accuracy -*-: 0.948
-Finish time: 3-19 16:11:49
-__________*_____ * ______*_________
-________________ * ________________
-Start time: 3-19 16:12:45
+Start time: 5-17 14:54:14
 Train_num: 60000
 Param    : ../config/param.cfg
 Test_num : 10000
--*- Accuracy -*-: 0.9515
-Finish time: 3-19 16:15:8
+-*- Accuracy -*-: 0.9788
+Finish time: 5-17 14:56:36
 __________*_____ * ______*_________
 ________________ * ________________
-Start time: 3-19 16:16:19
+Start time: 5-17 14:56:39
 Train_num: 60000
 Param    : ../config/param.cfg
 Test_num : 10000
--*- Accuracy -*-: 0.9531
-Finish time: 3-19 16:19:14
+-*- Accuracy -*-: 0.9775
+Finish time: 5-17 14:59:6
 __________*_____ * ______*_________
 ________________ * ________________
-Start time: 3-19 16:23:45
+Start time: 5-19 14:55:1
 Train_num: 60000
 Param    : ../config/param.cfg
 Test_num : 10000
--*- Accuracy -*-: 0.9597
-Finish time: 3-19 16:27:43
+-*- Accuracy -*-: 0.9802
+Finish time: 5-19 14:57:18
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 5-19 14:57:25
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9799
+Finish time: 5-19 14:59:35
+__________*_____ * ______*_________
+________________ * ________________
+Start time: 5-19 14:59:39
+Train_num: 60000
+Param    : ../config/param.cfg
+Test_num : 10000
+-*- Accuracy -*-: 0.9795
+Finish time: 5-19 15:1:49
 __________*_____ * ______*_________
